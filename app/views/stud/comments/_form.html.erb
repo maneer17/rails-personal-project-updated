@@ -1,0 +1,9 @@
+
+<%= simple_form_for([ :stud, @course, post, post.comments.build ]) do |f| %>
+    <div class="field">
+    <div class="control" >
+      <%= f.input :body, input_html: { class: 'textarea' }, wrapper: false, label: false  %>
+    </div>
+    </div>
+    <%= f.button :submit, 'post comment', class: "btn btn-primary" %>
+    <% end %>

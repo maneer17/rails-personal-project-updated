@@ -1,0 +1,27 @@
+<p style="color: green"><%= notice %></p>
+
+<section class="section">
+	<div class="container">
+		<nav class="level">
+		 
+		</nav>
+		
+
+		<div class="content">
+      <strong style="color:blue;"><%= @post.title%></strong>
+			<%= @post.body %>
+		</div>
+  <%= link_to "Edit this post", edit_teach_course_post_path(@course,@post) %> |
+  <%= link_to "Back to posts", teach_course_posts_path %>
+
+  <%= button_to "Destroy this post", [:teach,@course,@post], method: :delete, class:"btn btn-danger" %>
+</div>
+</section>
+<hr>
+<section class="section comments">
+	<div class="container">
+	<strong class="subtitle is-5">students Comments for this post:</strong> 
+		<%= render @post.comments %>
+	</div>
+</section>
+

@@ -1,0 +1,29 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Assignments" %>
+
+<h1>Assignments for <%= @course.name %></h1>
+
+<div id="assignments">
+  <table class="table " >
+    <thead>
+    <tr >
+      <th scope="col">Assignment</th>
+      <th scope="col">Deadline</th>
+    </tr>
+    </thead>
+    <tbody>
+  <% @assignments.each do |assignment| %>
+      <tr>
+        <td><%= link_to assignment.title, teach_course_assignment_path(@course,assignment)%></td>
+        <% if assignment.deadline %>
+         <td><%= assignment.deadline.strftime("%B %d, %Y %I:%M %p")  %></td>
+         <%end %>
+      </tr>
+  <% end %>
+    </tbody>
+  </table>
+</div>
+
+<%= button_to "New assignment", new_teach_course_assignment_path, method: :get, class:"btn btn-success"%>
+

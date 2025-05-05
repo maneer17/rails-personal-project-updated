@@ -1,0 +1,7 @@
+<% if course.avatar.attached? %>
+    <% if course.avatar.image? %>
+    <%= image_tag(course.avatar,class:"card-img-top") %>
+    <% end %>
+  <% else%>
+    <%= image_tag "images/#{random_image_from_folder('images') }",class:"card-img-top" %>
+  <%end %>
