@@ -15,7 +15,7 @@
     <tbody>
   <% @assignments.each do |assignment| %>
       <tr>
-        <td><%= link_to assignment.title, teach_course_assignment_path(@course,assignment)%></td>
+        <td><%= link_to assignment.title, [:teach,@course, assignment]%></td>
         <% if assignment.deadline %>
          <td><%= assignment.deadline.strftime("%B %d, %Y %I:%M %p")  %></td>
          <%end %>
