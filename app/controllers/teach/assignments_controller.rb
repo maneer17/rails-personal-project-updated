@@ -24,8 +24,8 @@ class Teach::AssignmentsController < ApplicationController
 
   # POST /assignments or /assignments.json
   def create
-    @assignment = @course.assignments.build(assignment_params)
-    #redirect_to article_path(@article)
+    @assignment = @course.assignments.create(assignment_params)
+    # redirect_to article_path(@article)
 
     respond_to do |format|
       if @assignment.save
@@ -43,7 +43,7 @@ class Teach::AssignmentsController < ApplicationController
   def update
     respond_to do |format|
       if @assignment.update(assignment_params)
-        format.html { redirect_to [:teach, @course,@assignment], notice: "Assignment was successfully updated." }
+        format.html { redirect_to [ :teach, @course, @assignment ], notice: "Assignment was successfully updated." }
         format.json { render :show, status: :ok, location: @assignment }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -65,7 +65,7 @@ class Teach::AssignmentsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_course
-      @course = Course.find(params[:course_id ])
+      @course = Course.find(params[:course_id])
     end
   def set_assignment
     @assignment = @course.assignments.find(params[:id])

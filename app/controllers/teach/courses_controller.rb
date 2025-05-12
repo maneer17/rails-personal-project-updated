@@ -1,4 +1,4 @@
-# app/controllers/teach/courses_controller.rb
+
 class Teach::CoursesController < ApplicationController
   before_action :set_teacher
   before_action :set_course, only: %i[show edit update destroy]
@@ -7,15 +7,14 @@ class Teach::CoursesController < ApplicationController
   def index
       @courses = @teacher.courses.all
   end
-  
+
   def new
     @course = @teacher.courses.new
   end
 
   # POST /teach/courses or /teach/courses.json
   def create
-    @course = Course.new(course_params)
-    @teacher.courses.append(@course)
+    @course=@teacher.courses.create(course_params)
     respond_to do |format|
       if @course.save
         format.html { redirect_to teach_course_path(@course), notice: "Course was successfully created." }
@@ -62,7 +61,7 @@ class Teach::CoursesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def course_params
-    params.require(:course).permit(:name, :description,:avatar)
+    params.require(:course).permit(:name, :description, :avatar)
   end
   def teacher_teaches_course
     unless @course.teacher_id == current_teacher.id

@@ -1,12 +1,12 @@
 class Teach::PostsController < ApplicationController
   before_action :set_course, only: %i[ new create show edit update destroy ]
   before_action :set_post, only: %i[ show edit update destroy ]
- 
+
 
   # GET /posts or /posts.json
   def index
     @course = Course.find(params[:course_id])
-    @posts = Post.x_course_posts(@course.id)
+    @posts = @course.posts
   end
 
   # GET /posts/1 or /posts/1.json
@@ -24,7 +24,7 @@ class Teach::PostsController < ApplicationController
 
   # POST /posts or /posts.json
   def create
-    @post = @course.posts.build(post_params)
+    @post = @course.posts.create(post_params)
 
     respond_to do |format|
       if @post.save
@@ -41,7 +41,7 @@ class Teach::PostsController < ApplicationController
   def update
     respond_to do |format|
       if @post.update(post_params)
-        format.html { redirect_to [:teach,@course,@post], notice: "Post was successfully updated." }
+        format.html { redirect_to [ :teach, @course, @post ], notice: "Post was successfully updated." }
         format.json { render :show, status: :ok, location: @post }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -65,9 +65,10 @@ class Teach::PostsController < ApplicationController
     def set_post
       @post = Post.find(params[:id])
     end
-  def set_course
-    @course = Course.find(params[:course_id])
-  end
+
+    def set_course
+      @course = Course.find(params[:course_id])
+    end
 
     # Only allow a list of trusted parameters through.
     def post_params
