@@ -13,15 +13,15 @@ class Stud::PostsController < ApplicationController
 
   private
 
-  def set_student
-    @student = current_student
-  end
+    def set_student
+      @student = current_student
+    end
 
-  def set_course
-    @course = @student.courses.find(params[:course_id])
-  end
+    def set_course
+      @course = @student.courses.find(params[:course_id])
+    end
 
-  def set_post
-    @post = @course.posts.find(params[:id])
-  end
+    def set_post
+      @post = @course.posts.find(params[:id])
+    end
 end

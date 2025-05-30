@@ -1,0 +1,7 @@
+- content_for :title, "New course"
+
+%h1 = @course
+= render "form", course: @course
+%br/
+%div
+  = link_to "Back to courses", teach_courses_path

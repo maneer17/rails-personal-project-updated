@@ -9,7 +9,6 @@ class Assignment < ApplicationRecord
       errors.add(:deadline, "can't be in the past")
     end
   end
-
 end
 
 =begin

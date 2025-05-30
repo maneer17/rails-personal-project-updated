@@ -1,0 +1,20 @@
+%p{:style => "color: green"}= notice
+- content_for :title, "Submissions"
+%h2{:style => "background-color: lightblue ; margin-left: 30px"}
+  Submissions for #{@assignment.title} assignment
+%p{:style => " margin-left: 60px"}
+  = @count
+  students submitted this assignment so far
+#submissions
+  %table.table.table-bordered.border-primary
+    %thead
+      %tr
+        %th{:scope => "col"} Student id
+        %th{:scope => "col"} Student name
+        %th{:scope => "col"} submission title
+        %th{:scope => "col"} submission file
+        %th{:scope => "col"} submitted at :
+    %tbody
+      - @submissions.each do |submission|
+        = render submission
+  = button_to "back to  assignment", teach_course_assignment_path(@assignment.course_id,@assignment), method: :get, class:"btn btn-info"

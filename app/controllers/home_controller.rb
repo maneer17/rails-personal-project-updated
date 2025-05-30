@@ -1,7 +1,6 @@
 class HomeController < ApplicationController
   before_action :redirect_based_on_role
   def index
-
   end
   private
   def redirect_based_on_role
@@ -13,4 +12,4 @@ class HomeController < ApplicationController
       redirect_to new_student_session_path
     end
   end
-  end
+end

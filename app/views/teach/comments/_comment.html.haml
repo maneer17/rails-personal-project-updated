@@ -1,0 +1,9 @@
+.box
+  %article.media
+    .media-content
+      .content
+        %p{:style => "margin: 10px;"}
+          = comment.body
+          %span.badge.rounded-pill.bg-secondary= comment.student.name
+      = button_to "Delete this comment", [:teach,@course,@post,comment], class:"badge rounded-pill bg-danger",method: :delete,  data: { confirm: 'Are you sure?' }
+    %hr/

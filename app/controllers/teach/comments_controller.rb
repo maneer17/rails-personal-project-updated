@@ -8,7 +8,6 @@ class Teach::CommentsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to teach_course_post_comments_path, status: :see_other, notice: "comment was successfully destroyed." }
       format.json { head :no_content }
-  
+    end
   end
-end
 end

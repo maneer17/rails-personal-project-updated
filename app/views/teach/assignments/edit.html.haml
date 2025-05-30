@@ -1,0 +1,8 @@
+- content_for :title, "Editing assignment"
+%h1 Editing assignment
+= render "form", assignment: [:teach, @assignment]
+%br/
+%div
+  = link_to "Show this assignment", [:teach, @course,@assignment]
+  |
+  \#{link_to "Back to assignments", teach_course_assignments_path}

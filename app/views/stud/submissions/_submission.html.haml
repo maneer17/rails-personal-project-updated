@@ -1,0 +1,7 @@
+%div{:id => "#{dom_id submission}"}
+  %p
+    %strong Title:
+    = submission.title
+    %strong submitted at :
+    = submission.created_at
+    = render "attachment", submission:submission

@@ -1,0 +1,17 @@
+%h2
+  Posts of the #{@course.name} course
+.section
+  = button_to "New Post", new_teach_course_post_path, method: :get, class:"btn btn-success"
+  .container
+    - @posts.each do |post|
+      .card
+        .card-content{:style => "margin: 10px;"}
+          .media
+            .media-content
+              %p.title.is-7= link_to post.title,  teach_course_post_path(@course, post)
+          .content
+            = post.body
+          .comment-count
+            %span.tag.is-rounded
+              = post.comments.count
+              comments

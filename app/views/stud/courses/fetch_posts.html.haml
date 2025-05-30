@@ -1,0 +1,18 @@
+.main
+  .section
+    .container
+      - @posts.each do |post|
+        .card{style: "margin-top: 20px;"}
+          .card-content{style: "margin: 10px;"}
+            .media
+              .media-content
+                %p.title.is-7
+                  = link_to post.title, stud_course_post_path(post.course, post)
+
+            .content
+              = post.body
+
+            .comment-count
+              %span.tag.is-rounded
+                = post.comments.count
+                comments

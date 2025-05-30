@@ -1,0 +1,16 @@
+%p{style: "color: green"}= notice
+- content_for :title, "Your Upcoming Assignments"
+
+%h1 Assignments
+
+#assignments
+  %table.table.table-bordered
+    %thead
+      %tr
+        %th{scope: "col"} Title
+        %th{scope: "col"} Deadline
+    %tbody
+      - @assignments.each do |assignment|
+        %tr
+          %td= link_to assignment.title, stud_course_assignment_path(assignment.course_id, assignment.id)
+          %td= assignment.deadline

@@ -3,4 +3,3 @@ class ApplicationController < ::ApplicationController
   allow_browser versions: :modern
   before_action :authenticate_teacher!
 end
-

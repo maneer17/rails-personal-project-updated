@@ -1,0 +1,6 @@
+%p{style: "color: green"}= notice
+%h2{style: "color: #666666; margin-left: 20px"}= @course.name
+%p{style: "margin-left: 40px"}= @course.description
+%p
+  = @course.students.count
+  students enrolled in this course

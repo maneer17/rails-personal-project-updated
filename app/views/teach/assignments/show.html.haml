@@ -1,0 +1,10 @@
+%p{:style => "color: green"}= notice
+= render @assignment
+.container
+  .row.justify-content-start
+    .col-2
+      = button_to "Edit this assignment", edit_teach_course_assignment_path(@course,@assignment), method: :get, class:"btn btn-warning"
+    .col-2= button_to "Delete this assignment", [:teach, @course,@assignment], method: :delete, class:"btn btn-danger"
+    .col-2= button_to "list of submissions for this assignment",teach_course_assignment_submissions_path(@course,@assignment), method: :get, class:"btn btn-primary"
+%br/
+= button_to "Back to assignments", teach_course_assignments_path, method: :get, class:"btn btn-info"

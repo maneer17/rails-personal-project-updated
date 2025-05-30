@@ -9,12 +9,13 @@ class Teach::CoursesController < ApplicationController
   end
 
   def new
+    @hello =I18n.t("hello")
     @course = @teacher.courses.new
   end
 
   # POST /teach/courses or /teach/courses.json
   def create
-    @course=@teacher.courses.create(course_params)
+    @course = @teacher.courses.create(course_params)
     respond_to do |format|
       if @course.save
         format.html { redirect_to teach_course_path(@course), notice: "Course was successfully created." }
@@ -50,22 +51,23 @@ class Teach::CoursesController < ApplicationController
   end
 
   private
-
-  # Use callbacks to share common setup or constraints between actions.
-  def set_teacher
-    @teacher = current_teacher
-  end
-  def set_course
-    @course = @teacher.courses.find(params[:id])
-  end
-
-  # Only allow a list of trusted parameters through.
-  def course_params
-    params.require(:course).permit(:name, :description, :avatar)
-  end
-  def teacher_teaches_course
-    unless @course.teacher_id == current_teacher.id
-      redirect_to teach_courses_path, notice: "You are not authorized to edit this course."
+    # Use callbacks to share common setup or constraints between actions.
+    def set_teacher
+      @teacher = current_teacher
     end
-  end
+
+    def set_course
+      @course = @teacher.courses.find(params[:id])
+    end
+
+    # Only allow a list of trusted parameters through.
+    def course_params
+      params.require(:course).permit(:name, :description, :avatar)
+    end
+
+    def teacher_teaches_course
+      unless @course.teacher_id == current_teacher.id
+        redirect_to teach_courses_path, notice: "You are not authorized to edit this course."
+      end
+    end
 end

@@ -1,0 +1,8 @@
+%p{:style => "color: green"}= notice
+- content_for :title, "Submissions"
+%h1 Submissions
+#submissions
+  - @submissions.each do |submission|
+    = render submission
+    %p
+      = link_to "back to  assignment", stud_course_assignment_path(@assignment.course_id,@assignment)

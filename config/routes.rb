@@ -1,20 +1,14 @@
 Rails.application.routes.draw do
   # config/routes.rb
-  devise_for :teachers, controllers: {
-    registrations: 'teachers/registrations'
-  }, path: 'teachers'
-
-
-  devise_for :students, controllers: {
-    registrations: 'students/registrations'
-  }, path: 'students'
+  devise_for :teachers, path: "auth/teachers"
+  devise_for :students, path: "auth/students"
 
   namespace :teach do
     resources :courses do
       resources :assignments do
-        resources :submissions, only:[:index, :show]
+        resources :submissions, only: [ :index, :show ]
       end
-      resources :posts do 
+      resources :posts do
         resources :comments
       end
     end
@@ -31,14 +25,13 @@ Rails.application.routes.draw do
         post :enroll
         delete :unenroll
       end
-      resources :posts do 
+      resources :posts do
         resources :comments
       end
-      resources :assignments, only: [ :index, :show] do
+      resources :assignments, only: [ :index, :show ] do
         resources :submissions, only: [ :index, :show, :new, :create ]
       end
       end
-
 end
 
 
