@@ -1,0 +1,13 @@
+posts:
+      index:
+        new_post: "New Post"
+      new:
+        title: "New Post"
+      post:
+        post_title: "Title"
+        body: "Body"
+      edit:
+        title: "Editing Post"
+        show_post: "Show this post"
+        back: "Back to Posts"
+      show:

@@ -1,6 +1,4 @@
-- content_for :title, "New course"
-
-%h1 = @course
+%h1= t(".title")
 = render "form", course: @course
 %br/
 %div

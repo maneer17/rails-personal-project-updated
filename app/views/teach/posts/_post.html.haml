@@ -1,7 +1,5 @@
 %div{:id => "#{dom_id post}"}
   %p
-    %strong Title:
-    = post.title
+    %strong = t(".post_title") post.title
   %p
-    %strong Body:
-    = post.body
+    %strong = t(".body") post.body

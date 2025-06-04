@@ -1,0 +1,17 @@
+%p{style: "color: green"}= notice
+- content_for :title, "new Courses to enroll"
+
+%h1{style: "margin-left: 15px"} New Courses:
+%br/
+
+#courses
+  .container
+    .row.row-cols-1.row-cols-md-3.g-3
+      - @courses.each do |course|
+        .col
+          .card{style: "height: 100%; margin-left: 20px; border-bottom-color: black"}
+            = render course
+            = button_to "Enroll in this course", enroll_student_courses_path(course_id: course.id),
+                        method: :post,
+                        class: "btn btn-primary",
+                        data: { turbo_confirm: "Are you sure you want to be a member of #{course.name}?" }

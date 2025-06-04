@@ -1,0 +1,12 @@
+%div{id: dom_id(course)}
+  = render "attachment", course: course
+
+  %h5.card-title{style: "text-align: left; margin-top: 20px; margin-left: 10px;"}
+    = link_to course.name, student_course_assignments_path(course.id)
+
+  .card-body
+    %p.card-text
+      = course.description.slice(0, 50)
+      = link_to "...show more", student_course_path(course.id)
+
+    %h6.card-text= Teacher.find(course.teacher_id).name

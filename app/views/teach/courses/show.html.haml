@@ -4,9 +4,8 @@
 .container
   .row.justify-content-start
     .col-2
-      = button_to "Edit this course", edit_teach_course_path(@course),method: :get, class:"btn btn-warning"
+      = button_to t(".edit"), edit_teach_course_path(@course),method: :get, class:"btn btn-warning"
     .col-2
-      = button_to "Delete this course", [:teach, @course], method: :delete, class:"btn btn-danger"
+      = button_to t(".delete"), [:teach, @course], method: :delete, class:"btn btn-danger"
 %p
-  = @course.students.count
-  students enrolled in this course
+  = @course.students.count t(".enrolled_in_this_course")

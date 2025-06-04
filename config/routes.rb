@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   end
 
 
-  namespace :stud do
+  namespace :student do
     resources :courses, only: [ :index, :show ] do
       collection do
         get :select

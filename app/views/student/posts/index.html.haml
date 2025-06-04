@@ -1,14 +1,13 @@
 %h2
   Posts of the #{@course.name} course
 .section
-  = button_to t(".new_post"), new_teach_course_post_path, method: :get, class:"btn btn-success"
   .container
     - @posts.each do |post|
       .card
         .card-content{:style => "margin: 10px;"}
           .media
             .media-content
-              %p.title.is-7= link_to post.title,  teach_course_post_path(@course, post)
+              %p.title.is-7= link_to post.title,  student_course_post_path(@course, post)
           .content
             = post.body
           .comment-count

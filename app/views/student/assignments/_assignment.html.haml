@@ -1,0 +1,9 @@
+%div{ id: dom_id(assignment) }
+  .assignment-details{ style: "margin-left: 20px" }
+    %p.assignment-title
+      %strong= assignment.title
+    %p.assignment-content
+      = assignment.content
+    %p.assignment-deadline
+      %strong Deadline:
+      = assignment.deadline.strftime("%B %d, %Y %I:%M %p")
