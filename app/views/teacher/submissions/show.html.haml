@@ -1,0 +1,7 @@
+%p{style: "color: green"}= notice
+= render @submission
+%div
+  = button_to t(".back_to_assignment"), 
+    stud_course_assignment_path(@course, @assignment),
+    method: :get,
+    class: "btn btn-info"

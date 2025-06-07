@@ -1,14 +1,14 @@
 %p{style: "color: green"}= notice
-- content_for :title, "Your Upcoming Assignments"
+- content_for :title, t(".title")
 
-%h1 Assignments
+%h1= t(".title")
 
 #assignments
   %table.table.table-bordered
     %thead
       %tr
-        %th{scope: "col"} Title
-        %th{scope: "col"} Deadline
+        %th{scope: "col"}=t(".ass_title")
+        %th{scope: "col"}=t(".ass_deadline") 
     %tbody
       - @assignments.each do |assignment|
         %tr

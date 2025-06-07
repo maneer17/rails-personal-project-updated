@@ -14,5 +14,5 @@
 
             .comment-count
               %span.tag.is-rounded
-                = post.comments.count
-                comments
+                = t(".comments",num_of_comments: post.comments.count) 
+              

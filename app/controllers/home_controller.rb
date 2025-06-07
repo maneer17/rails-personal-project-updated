@@ -5,7 +5,7 @@ class HomeController < ApplicationController
   private
   def redirect_based_on_role
     if current_teacher
-      redirect_to teach_courses_path
+      redirect_to teacher_courses_path
     elsif current_student
       redirect_to student_courses_path
     else

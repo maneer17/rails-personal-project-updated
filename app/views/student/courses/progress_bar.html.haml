@@ -1,20 +1,20 @@
 - if @progress <= 25
-  - message = "Getting started is the hardest part, keep going! 🥺"
+  - message = t(".progress_25")
   - class_v = "progress-bar bg-danger"
 - elsif @progress <= 50
-  - message = "You're almost halfway through, don't give up! 💪🏻"
+  - message = t(".progress_50")
   - class_v = "progress-bar bg-warning"
 - elsif @progress <= 75
-  - message = "You're doing amazing, keep going! 🤩"
+  - message = t(".progress_75")
   - class_v = "progress-bar bg-info"
 - elsif @progress < 90
-  - message = "WOW! The finish line is getting closer — you're killing it 🔥"
+  - message = t(".progress_90")
   - class_v = "progress-bar bg-primary"
 - else
-  - message = "Congratulations, you finished all of your assignments! 🎉"
+  - message = t(".progress_100")
   - class_v = "progress-bar bg-success"
 
-%h1 Your Progress Bar
+%h1= t(".your_progressbar")
 %br/
 .progress
 %div{ aria_valuenow: @progress, class: "progress-bar #{class_v}", role: "progressbar", style: "width: #{@progress}%" }
@@ -23,4 +23,5 @@
 %div{style: "margin-left: 50px"}
   %h4{style: "color: olivedrab"}= message
   %h6
-    You have finished #{@submitted.round} of #{@total.round} assignments
+  = t(".finished_assignments",submitted: @submitted.round, total: @total.round)
+   

@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   devise_for :teachers, path: "auth/teachers"
   devise_for :students, path: "auth/students"
 
-  namespace :teach do
+  namespace :teacher do
     resources :courses do
       resources :assignments do
         resources :submissions, only: [ :index, :show ]
