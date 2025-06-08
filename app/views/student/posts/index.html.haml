@@ -1,10 +1,11 @@
+- content_for :title, t(".title",course_name: @course_name)
 %h2
-  Posts of the #{@course.name} course
+  =t(".title",course_name: @course_name)
 .section
   .container
     - @posts.each do |post|
       .card
-        .card-content{:style => "margin: 10px;"}
+        .card-content{style:  "margin: 10px;"}
           .media
             .media-content
               %p.title.is-7= link_to post.title,  student_course_post_path(@course, post)
@@ -12,5 +13,5 @@
             = post.body
           .comment-count
             %span.tag.is-rounded
-              = post.comments.count
-              comments
+              
+              = t(".comments", count: post.comments.count)

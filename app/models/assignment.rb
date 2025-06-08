@@ -3,6 +3,7 @@ class Assignment < ApplicationRecord
   belongs_to :course
   has_many :submissions, dependent: :destroy
   validates :title, length: { in: 6..30 }
+  validates :content, presence: :true
   validate :deadline_date_cannot_be_in_the_past
   def deadline_date_cannot_be_in_the_past
     if deadline.present? && deadline < (Time.current+2.hours)

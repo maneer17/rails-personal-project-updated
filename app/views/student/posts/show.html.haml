@@ -8,9 +8,9 @@
     %hr/
     %section.section.comments
       .container
-        %strong.subtitle.is-5{:style => "color: green ;"} Student Comments for this post:
+        %strong.subtitle.is-5{:style => "color: green ;"}= t(".students_comments")
         %p
         = render @post.comments
         .comment-form
-          %h3.subtitle.is-3 Leave a comment
+          %h3.subtitle.is-3= t(".leave_comment")
           = render "student/comments/form", post:@post

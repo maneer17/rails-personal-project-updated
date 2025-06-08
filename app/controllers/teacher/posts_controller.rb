@@ -27,7 +27,7 @@ class Teacher::PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
-        format.html { redirect_to teacher_course_posts_path, notice: "Post was successfully created." }
+        format.html { redirect_to teacher_course_posts_path, notice: t(".notice") }
         format.json { render :show, status: :created, location: @post }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -40,7 +40,7 @@ class Teacher::PostsController < ApplicationController
   def update
     respond_to do |format|
       if @post.update(post_params)
-        format.html { redirect_to [ :teacher, @course, @post ], notice: "Post was successfully updated." }
+        format.html { redirect_to [ :teacher, @course, @post ], notice: t(".notice") }
         format.json { render :show, status: :ok, location: @post }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -53,7 +53,7 @@ class Teacher::PostsController < ApplicationController
   def destroy
     @post.destroy!
     respond_to do |format|
-      format.html { redirect_to teacher_course_posts_path, status: :see_other, notice: "Post was successfully destroyed." }
+      format.html { redirect_to teacher_course_posts_path, status: :see_other, notice: t(".notice") }
       format.json { head :no_content }
     end
   end

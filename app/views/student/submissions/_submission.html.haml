@@ -1,7 +1,7 @@
 %div{:id => "#{dom_id submission}"}
   %p
-    %strong Title:
+    %strong= t(".title")
     = submission.title
-    %strong submitted at :
+    %strong= t(".submitted_at")
     = submission.created_at
     = render "attachment", submission:submission

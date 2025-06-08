@@ -34,7 +34,7 @@ class Student::AssignmentsController < ApplicationController
     end
     def check_enrollment
       unless current_student.courses.include?(@course)
-        redirect_to select_student_courses_path, notice: "enroll in this course to get access to its materials !"
+        redirect_to select_student_courses_path, notice: t(".notice")
       end
     end
 end

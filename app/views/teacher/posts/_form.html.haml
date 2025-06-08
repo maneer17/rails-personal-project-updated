@@ -2,8 +2,7 @@
   - if @post.errors.any?
     %div{style: "color: red"}
       %h2
-        = pluralize(@post.errors.count, "error")
-        prohibited this post from being saved:
+        = t("form.error_message", count: @post.errors.count, model: "post" )
       %ul
         - @post.errors.each do |error|
           %li= error.full_message

@@ -18,7 +18,7 @@ class Teacher::CoursesController < ApplicationController
     @course = @teacher.courses.create(course_params)
     respond_to do |format|
       if @course.save
-        format.html { redirect_to teacher_course_path(@course), notice: "Course was successfully created." }
+        format.html { redirect_to teacher_course_path(@course), notice: t(".notice") }
         format.json { render :show, status: :created, location: @course }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -31,7 +31,7 @@ class Teacher::CoursesController < ApplicationController
   def update
     respond_to do |format|
       if @course.update(course_params)
-        format.html { redirect_to teacher_course_path(@course), notice: "Course was successfully updated." }
+        format.html { redirect_to teacher_course_path(@course), notice: t(".notice") }
         format.json { render :show, status: :ok, location: @course }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -45,7 +45,7 @@ class Teacher::CoursesController < ApplicationController
     @course.destroy!
 
     respond_to do |format|
-      format.html { redirect_to teacher_courses_path, status: :see_other, notice: "Course was successfully destroyed." }
+      format.html { redirect_to teacher_courses_path, status: :see_other, notice: t(".notice") }
       format.json { head :no_content }
     end
   end
@@ -67,7 +67,7 @@ class Teacher::CoursesController < ApplicationController
 
     def teacher_teaches_course
       unless @course.teacher_id == current_teacher.id
-        redirect_to teacher_courses_path, notice: "You are not authorized to edit this course."
+        redirect_to teacher_courses_path, notice: t(".notice")
       end
     end
 end

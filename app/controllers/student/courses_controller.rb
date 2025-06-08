@@ -63,7 +63,7 @@ class Student::CoursesController < ApplicationController
     @course = Course.find(params[:course_id])
     current_student.courses << (@course)
     respond_to do |format|
-        format.html { redirect_to select_student_courses_path, notice: "you were successfully enrolled " }
+        format.html { redirect_to select_student_courses_path, notice: t(".notice") }
       end
   end
 
@@ -71,7 +71,7 @@ class Student::CoursesController < ApplicationController
     @course = Course.find(params[:course_id])
     current_student.courses.delete(@course)
     respond_to do |format|
-      format.html { redirect_to student_courses_path, notice: "you were unenrolled from this course ." }
+      format.html { redirect_to student_courses_path, notice: t(".notice") }
     end
   end
   # PATCH/PUT /teach/courses/1 or /teach/courses/1.json

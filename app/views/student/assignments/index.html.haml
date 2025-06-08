@@ -1,20 +1,19 @@
 %p{style: "color: green"}= notice
 
-- content_for :title, "Assignments"
+- content_for :title, t(".title",course_name: @course.name)
 
-%h1
-  Assignments for #{@course.name}
+%h1= t(".title",course_name: @course.name)
 
 #assignments
   %table.table
     %thead
       %tr
-        %th{scope: "col"} Assignment
-        %th{scope: "col"} Deadline
+        %th{scope: "col"}= t(".assignment") 
+        %th{scope: "col"}= t(".deadline") 
     %tbody
       - @assignments.each do |assignment|
         %tr
           %td= link_to assignment.title, student_course_assignment_path(@course, assignment)
           %td= assignment.deadline.strftime("%B %d, %Y %I:%M %p")
 
-= link_to "back to course", student_course_path(@course)
+= link_to t(".back_to_course"), student_course_path(@course)

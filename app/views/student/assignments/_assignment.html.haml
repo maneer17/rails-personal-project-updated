@@ -5,5 +5,5 @@
     %p.assignment-content
       = assignment.content
     %p.assignment-deadline
-      %strong Deadline:
+      %strong= t(".deadline")
       = assignment.deadline.strftime("%B %d, %Y %I:%M %p")

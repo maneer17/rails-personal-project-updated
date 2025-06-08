@@ -22,7 +22,7 @@ class Student::SubmissionsController < ApplicationController
 
     respond_to do |format|
       if @submission.save
-        format.html { redirect_to student_course_assignment_submission_path(@course, @assignment, @submission), notice: "Submission was successfully created." }
+        format.html { redirect_to student_course_assignment_submission_path(@course, @assignment, @submission), notice: t(".notice") }
         format.json { render :show, status: :created, location: @submission }
       else
         format.html { render :new, status: :unprocessable_entity }

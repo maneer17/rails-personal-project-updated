@@ -1,13 +1,43 @@
 en:
+
+  layouts:
+    navbar:
+      student_sign_in: "Sign in as a student"
+      teacher_sign_in: "Sign in as a teacher"
+    navbars:
+      student:
+        courses: "Courses"
+        posts: "Posts"
+        upcoming_assignments: "Upcoming assignments"
+        your_progress: "your progress"
+        enroll_in_new_courses: "Enroll in new courses"
+        sign_out: "Sign out" 
+      teacher:
+        my_courses: "My courses"
+        new_course: "New course"
+        sign_out: "Sign out"  
+
   hello: "Hello world"
   show: "Show"
   edit: "Edit"
   delete: "Delete"
+  form:
+    error_message:
+      one: "1 error prohibited this %{model} from being saved:"
+      other: "%{count} errors prohibited this %{model} from being saved: "
 
   teacher:
     courses:
       index:
         title: "Courses"
+      create:
+        notice: "Course was successfully created."  
+      update:
+        notice: "Course was successfully updated"  
+      destroy:
+        notice: "Course was successfully destroyed"  
+      teacher_teaches_course:
+        notice: "You are not authorized to edit this course."  
 
       back_to_courses: "Back to courses"   
 
@@ -22,6 +52,14 @@ en:
 
     assignments:
       back_to_assignments: "Back to assignments"
+      create:
+        notice: "Assignment was successfully created."  
+      update:
+        notice: "Assignment was successfully updated"  
+      destroy:
+        notice: "Assignment was successfully destroyed"  
+      teacher_teaches_course:
+        notice: "You are not authorized to edit this course."
 
       index:
         title: "Assignments"
@@ -32,7 +70,6 @@ en:
 
       show:
         submissions_for_assignment: "list of submissions for this assignment"
-
       edit:
         title: "Editing assignment"
 
@@ -44,6 +81,12 @@ en:
 
     posts:
       back_to_posts: "Back To Posts"
+      create:
+        notice: "Post was successfully created."  
+      update:
+        notice: "Post was successfully updated"  
+      destroy:
+        notice: "Post was successfully destroyed"
 
       index:
         posts_of_Xcourse: "Posts of %{course_name} course"
@@ -55,9 +98,16 @@ en:
 
       edit:
         title: "Edit Post"  
+    comments:
+      destroy:
+        notice: "comment was successfully destroyed."    
 
   student:
     courses:
+      unenroll:
+        notice: "you were unenrolled from this course ."
+      check_enrollment:
+        notice: "enroll in this course to get access to its materials !"  
       index:
         title: "My Courses"
         your_courses: "My Courses"
@@ -78,7 +128,7 @@ en:
         comments: "%{num_of_comments} comments"
 
       progress_bar:
-        progress_25: "Getting started is the hardest part, keep going! 🥺"
+        progress_25:  "Getting started is the hardest part, keep going! 🥺"
         progress_50: "You're almost halfway through, don't give up! 💪🏻"
         progress_75: "You're doing amazing, keep going! 🤩"
         progress_90: "WOW! The finish line is getting closer — you're killing it 🔥" 
@@ -95,6 +145,47 @@ en:
         title: "Your Upcoming Assignments"
         ass_title: "Title"
         ass_deadline: "Deadline"
+
+    assignments:
+      back_to_assignments: "back to assignments"
+      back_to_course: "Back to course"
+      assignment: "Assignment"
+      deadline: "Deadline"
+      index:
+        title: "assignments of %{course_name}"
+      show:
+        title: "%{ass_name} assignment"
+        my_submission: "My Submission"
+        new_submission: "New Submission"  
+    submissions:
+      create:
+        notice: "Submission was successfully created."
+      back_to_assignment: "back to assignment"
+      index:
+        title: "Submission"
+      new:
+        title: "New Submission"  
+      title: "Title"
+      submission: 
+        submitted_at: "submitted at:"
+      edit:
+        title: "editing submission"
+        show_submission: "Show this submission"   
+    posts:
+      index:
+        title: "Posts of %{course_name} course"
+        comments:
+          zero: "no comments yet "
+          one: "1 comment"
+          other: "%{count} comments"    
+      show:
+        students_comments: "Student Comments for this post:"
+        leave_comment : "Leave a comment "    
+    comments:
+      destroy:
+        notice: "comment was successfully destroyed."    
+      
+          
 
 
           

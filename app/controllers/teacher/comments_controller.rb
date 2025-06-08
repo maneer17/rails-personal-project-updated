@@ -6,7 +6,7 @@ class Teacher::CommentsController < ApplicationController
     @comment = @post.comments.find(params[:id])
     @comment.destroy
     respond_to do |format|
-      format.html { redirect_to teacher_course_post_comments_path, status: :see_other, notice: "comment was successfully destroyed." }
+      format.html { redirect_to teacher_course_post_comments_path, status: :see_other, notice: t(".notice") }
       format.json { head :no_content }
     end
   end
