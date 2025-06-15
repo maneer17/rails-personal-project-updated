@@ -7,6 +7,7 @@ gem "sprockets-rails"
 # Use postgresql as the database for Active Record
 gem "pg", "~> 1.1"
 gem "haml"
+gem "haml-rails", "~> 2.0"
 gem "simple_form"
 gem "unsplash_image"
 # Use the Puma web server [https://github.com/puma/puma]
@@ -32,20 +33,20 @@ gem "jbuilder"
 gem "tzinfo-data", platforms: %i[ windows jruby ]
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
-gem 'dartsass-sprockets'
-gem 'jquery-rails'
+gem "dartsass-sprockets"
+gem "jquery-rails"
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 gem "image_processing", "~> 1.2"
-gem 'bootstrap', '~> 5.3.3'
+gem "bootstrap", "~> 5.3.3"
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
 
   # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
   gem "brakeman", require: false
-  gem 'html2haml', '~> 2.3'
-  gem 'faker'
-  gem 'pry'
+  gem "html2haml", "~> 2.3"
+  gem "faker"
+  gem "pry"
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false

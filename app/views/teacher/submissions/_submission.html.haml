@@ -1,0 +1,8 @@
+%div{id: dom_id (submission)}
+  %tr
+    %td= submission.student_id
+    %td= Student.find(submission.student_id).name
+    %td= submission.title
+    %td= render "attachment", submission:submission
+    %td= submission.created_at.strftime("%B %d, %Y %I:%M %p")
+  %tr

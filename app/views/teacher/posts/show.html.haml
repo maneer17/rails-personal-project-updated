@@ -1,0 +1,24 @@
+%p{style: "color: green"}= notice
+
+%section.section
+  .container
+    %nav.level
+    .content
+      %strong{style: "color: blue;"}= @post.title
+      = @post.body.to_plain_text
+
+    = link_to t("edit"), edit_teacher_course_post_path(@course, @post)
+    |
+    = link_to t(".back_to_posts"), teacher_course_posts_path(@course)
+
+    = button_to t("delete"),
+      [:teacher, @course, @post],
+      method: :delete,
+      class: "btn btn-danger"
+
+%hr/
+
+%section.section.comments
+  .container
+    %strong.subtitle.is-5 Students Comments for this post:
+    = render @post.comments

@@ -8,8 +8,5 @@ class Student < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-    # Update the association to specify the correct class_name
-
-
-
+  # Update the association to specify the correct class_name
 end

@@ -1,0 +1,16 @@
+.box
+  %article.media
+    .media-content
+      .content
+        %p{style: "margin: 10px;"}
+          = comment.body
+          by
+          %span.badge.rounded-pill.bg-secondary= comment.student.name
+
+      - if current_student == comment.student
+        = link_to "Destroy this comment", [:student, @course, @post, comment],
+                  method: :delete,
+                  class: "btn btn-danger",
+                  data: { confirm: "Are you sure?" }
+
+      %hr/

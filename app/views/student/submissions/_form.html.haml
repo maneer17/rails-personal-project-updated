@@ -1,0 +1,15 @@
+= form_with(model: [ :student, @course,@assignment, submission ]) do |form|
+  - if submission.errors.any?
+    %div{:style => "color: red"}
+      %h2= t("form.error_message", count: submission.errors.count, model: "submission" )
+      %ul
+        - submission.errors.full_messages.each do |error|
+          %li= error
+  %div
+    = form.label :title, style: "display: block"
+    = form.text_field :title
+  %div
+    = form.label :file, style: "display: block"
+    = form.file_field :file
+  %div
+    = form.submit

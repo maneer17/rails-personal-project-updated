@@ -1,0 +1,16 @@
+%p{:style => "color: green"}= notice
+%section.section
+  .container
+    %nav.level
+    .content
+      %strong{:style => "color:blue;"}= @post.title
+      = @post.body
+    %hr/
+    %section.section.comments
+      .container
+        %strong.subtitle.is-5{:style => "color: green ;"}= t(".students_comments")
+        %p
+        = render @post.comments
+        .comment-form
+          %h3.subtitle.is-3= t(".leave_comment")
+          = render "student/comments/form", post:@post

@@ -1,35 +1,202 @@
-# Files in the config/locales directory are used for internationalization and
-# are automatically loaded by Rails. If you want to use locales other than
-# English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t "hello"
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t("hello") %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more about the API, please read the Rails Internationalization guide
-# at https://guides.rubyonrails.org/i18n.html.
-#
-# Be aware that YAML interprets the following case-insensitive strings as
-# booleans: `true`, `false`, `on`, `off`, `yes`, `no`. Therefore, these strings
-# must be quoted to be interpreted as strings. For example:
-#
-#     en:
-#       "yes": yup
-#       enabled: "ON"
-
 en:
+
+  layouts:
+    navbar:
+      student_sign_in: "Sign in as a student"
+      teacher_sign_in: "Sign in as a teacher"
+    navbars:
+      student:
+        courses: "Courses"
+        posts: "Posts"
+        upcoming_assignments: "Upcoming assignments"
+        your_progress: "your progress"
+        enroll_in_new_courses: "Enroll in new courses"
+        sign_out: "Sign out" 
+      teacher:
+        my_courses: "My courses"
+        new_course: "New course"
+        sign_out: "Sign out"  
+
   hello: "Hello world"
+<<<<<<< HEAD
   teach:
     courses:
       new:
         courses: "New Course"
+=======
+  show: "Show"
+  edit: "Edit"
+  delete: "Delete"
+  form:
+    error_message:
+      one: "1 error prohibited this %{model} from being saved:"
+      other: "%{count} errors prohibited this %{model} from being saved: "
+
+  teacher:
+    courses:
+      index:
+        title: "Courses"
+      create:
+        notice: "Course was successfully created."  
+      update:
+        notice: "Course was successfully updated"  
+      destroy:
+        notice: "Course was successfully destroyed"  
+      teacher_teaches_course:
+        notice: "You are not authorized to edit this course."  
+
+      back_to_courses: "Back to courses"   
+
+      new:
+        title: "New course"  
+
+      course:
+        show_more: '..show more' 
+
+      show:
+        enrolled_in_this_course: "students enrolled in this course"
+
+    assignments:
+      back_to_assignments: "Back to assignments"
+      create:
+        notice: "Assignment was successfully created."  
+      update:
+        notice: "Assignment was successfully updated"  
+      destroy:
+        notice: "Assignment was successfully destroyed"  
+      teacher_teaches_course:
+        notice: "You are not authorized to edit this course."
+
+      index:
+        title: "Assignments"
+        assignments_for: "Assignments for"
+        assignment: "Assignment"
+        deadline: "Deadline"
+        new_assignment: "New Assignment"
+
+      show:
+        submissions_for_assignment: "list of submissions for this assignment"
+      edit:
+        title: "Editing assignment"
+
+      new:
+        title: "New assignment"
+
+    submissions:
+      back_to_assignment: "Back To Assignment" 
+
+    posts:
+      back_to_posts: "Back To Posts"
+      create:
+        notice: "Post was successfully created."  
+      update:
+        notice: "Post was successfully updated"  
+      destroy:
+        notice: "Post was successfully destroyed"
+
+      index:
+        posts_of_Xcourse: "Posts of %{course_name} course"
+        new_post: "Create a new post"
+        comments: "%{num_of_comments} comments"
+
+      new:
+        title: "New Post"
+
+      edit:
+        title: "Edit Post"  
+    comments:
+      destroy:
+        notice: "comment was successfully destroyed."    
+
+  student:
+    courses:
+      unenroll:
+        notice: "you were unenrolled from this course ."
+      check_enrollment:
+        notice: "enroll in this course to get access to its materials !"  
+      index:
+        title: "My Courses"
+        your_courses: "My Courses"
+        assignments: "Assignments"
+        posts: "Posts"
+        unenroll_from_course: "Unenroll From This Course"
+        turbo_confirm: "Are you sure you want to withdraw from %{course_name}"
+
+      course:
+        show_more: "...show more"
+
+      post:
+        title: "Title:"
+        body: "Body:"
+        course: "Course:"
+
+      fetch_posts:
+        comments: "%{num_of_comments} comments"
+
+      progress_bar:
+        progress_25:  "Getting started is the hardest part, keep going! 🥺"
+        progress_50: "You're almost halfway through, don't give up! 💪🏻"
+        progress_75: "You're doing amazing, keep going! 🤩"
+        progress_90: "WOW! The finish line is getting closer — you're killing it 🔥" 
+        progress_100: "Congratulations, you finished all of your assignments! 🎉"
+        your_progressbar: "Your Progress Bar"
+        finished_assignments: "You have finished %{submitted} of %{total} assignments"    
+
+      select:
+        title: "New courses to enroll"
+        enroll_in_course: "enroll in this course"
+        turbo_confirm: "Are you sure you want to be a member of %{course_name} course?"
+
+      upcoming_assignments:
+        title: "Your Upcoming Assignments"
+        ass_title: "Title"
+        ass_deadline: "Deadline"
+
+    assignments:
+      back_to_assignments: "back to assignments"
+      back_to_course: "Back to course"
+      assignment: "Assignment"
+      deadline: "Deadline"
+      index:
+        title: "assignments of %{course_name}"
+      show:
+        title: "%{ass_name} assignment"
+        my_submission: "My Submission"
+        new_submission: "New Submission"  
+    submissions:
+      create:
+        notice: "Submission was successfully created."
+      back_to_assignment: "back to assignment"
+      index:
+        title: "Submission"
+      new:
+        title: "New Submission"  
+      title: "Title"
+      submission: 
+        submitted_at: "submitted at:"
+      edit:
+        title: "editing submission"
+        show_submission: "Show this submission"   
+    posts:
+      index:
+        title: "Posts of %{course_name} course"
+        comments:
+          zero: "no comments yet "
+          one: "1 comment"
+          other: "%{count} comments"    
+      show:
+        students_comments: "Student Comments for this post:"
+        leave_comment : "Leave a comment "    
+    comments:
+      destroy:
+        notice: "comment was successfully destroyed."    
+      
+          
+
+
+          
+
+
+
+         
+>>>>>>> clean-code

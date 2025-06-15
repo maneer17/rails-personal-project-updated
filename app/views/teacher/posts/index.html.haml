@@ -1,0 +1,20 @@
+%h2= t(".posts_of_Xcourse", course_name: @course.name)
+
+  
+.section
+  = button_to t(".new_post"), 
+    new_teacher_course_post_path, 
+    method: :get, 
+    class: "btn btn-success"
+  .container
+    - @posts.each do |post|
+      .card
+        .card-content{style: "margin: 10px;"}
+          .media
+            .media-content
+              %p.title.is-7= link_to post.title, teacher_course_post_path(@course, post)
+          .content
+            = post.body.to_plain_text
+          .comment-count
+            %span.tag.is-rounded
+              = t(".comments",num_of_comments: post.comments.count )
