@@ -4,7 +4,7 @@ class Fetcher
     @backups_dir = backups_dir
   end 
 
-  def fetch
+  def call 
      Dir.glob(backups_dir).map do |file|
        { name: File.basename(file), value: file }
     end

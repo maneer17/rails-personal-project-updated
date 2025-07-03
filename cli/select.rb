@@ -5,7 +5,7 @@ class Select
     @choices = choices
   end 
 
-  def select
+  def call
     prompt = TTY::Prompt.new
     prompt.select("Choose a backup file:",choices)
   end 
