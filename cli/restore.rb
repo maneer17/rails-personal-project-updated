@@ -7,7 +7,7 @@ class Restore
     @backup_file = backup_file
   end 
 
-  def restore
+  def call
     cmd = TTY::Command.new
     cmd.run("dropdb #{db}")
     cmd.run("createdb #{db}")
