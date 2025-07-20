@@ -1,8 +1,8 @@
 class HomeController < ApplicationController
   before_action :redirect_based_on_role
-  def index
-  end
+
   private
+
   def redirect_based_on_role
     if current_teacher
       redirect_to teacher_courses_path

@@ -1,6 +1,8 @@
 class Post < ApplicationRecord
-  has_rich_text :body
+  scope :x_course_posts, ->(course) { where("course_id = ? ", course) }
+
   belongs_to :course
   has_many :comments
-  scope :x_course_posts, ->(course) { where("course_id = ? ", course) }
+
+  has_rich_text :body
 end
