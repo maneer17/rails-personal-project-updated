@@ -3,10 +3,7 @@ class Student < ApplicationRecord
   has_many :courses, through: :student_courses
   has_many :submissions
   has_many :comments
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-
-  # Update the association to specify the correct class_name
 end

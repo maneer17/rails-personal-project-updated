@@ -4,5 +4,6 @@ class Course < ApplicationRecord
   has_many :students, through: :student_courses, dependent: :destroy
   has_many :assignments, dependent: :destroy
   has_many :posts, dependent: :destroy
+
   has_one_attached :avatar, dependent: :destroy
 end
