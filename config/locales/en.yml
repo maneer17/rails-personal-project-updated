@@ -18,12 +18,6 @@ en:
         sign_out: "Sign out"  
 
   hello: "Hello world"
-<<<<<<< HEAD
-  teach:
-    courses:
-      new:
-        courses: "New Course"
-=======
   show: "Show"
   edit: "Edit"
   delete: "Delete"
@@ -199,4 +193,3 @@ en:
 
 
          
->>>>>>> clean-code

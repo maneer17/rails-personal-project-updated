@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_05_29_031054) do
+ActiveRecord::Schema[7.2].define(version: 2025_01_16_071419) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -55,11 +55,10 @@ ActiveRecord::Schema[7.2].define(version: 2025_05_29_031054) do
   create_table "assignments", force: :cascade do |t|
     t.string "title"
     t.text "content"
+    t.date "deadline"
     t.bigint "course_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.datetime "deadline"
-    t.integer "likes", default: 1
     t.index ["course_id"], name: "index_assignments_on_course_id"
   end
 
@@ -88,7 +87,6 @@ ActiveRecord::Schema[7.2].define(version: 2025_05_29_031054) do
     t.bigint "course_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "post"
     t.index ["course_id"], name: "index_posts_on_course_id"
   end
 
@@ -104,12 +102,12 @@ ActiveRecord::Schema[7.2].define(version: 2025_05_29_031054) do
   create_table "students", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
+    t.string "name", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "name"
     t.index ["email"], name: "index_students_on_email", unique: true
     t.index ["reset_password_token"], name: "index_students_on_reset_password_token", unique: true
   end
@@ -117,9 +115,9 @@ ActiveRecord::Schema[7.2].define(version: 2025_05_29_031054) do
   create_table "submissions", force: :cascade do |t|
     t.bigint "student_id", null: false
     t.bigint "assignment_id", null: false
+    t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "title"
     t.index ["assignment_id"], name: "index_submissions_on_assignment_id"
     t.index ["student_id"], name: "index_submissions_on_student_id"
   end
@@ -127,12 +125,12 @@ ActiveRecord::Schema[7.2].define(version: 2025_05_29_031054) do
   create_table "teachers", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
+    t.string "name", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "name"
     t.index ["email"], name: "index_teachers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_teachers_on_reset_password_token", unique: true
   end
