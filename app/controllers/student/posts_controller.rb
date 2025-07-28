@@ -7,21 +7,16 @@ class Student::PostsController < ApplicationController
     @posts = @course.posts
   end
 
-  def show
-    # Logic to display a specific post if needed
+  private
+  def set_student
+    @student = current_student
   end
 
-  private
+  def set_course
+    @course = @student.courses.find(params[:course_id])
+  end
 
-    def set_student
-      @student = current_student
-    end
-
-    def set_course
-      @course = @student.courses.find(params[:course_id])
-    end
-
-    def set_post
-      @post = @course.posts.find(params[:id])
-    end
+  def set_post
+    @post = @course.posts.find(params[:id])
+  end
 end

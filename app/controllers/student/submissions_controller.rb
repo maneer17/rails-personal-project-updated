@@ -11,11 +11,11 @@ class Student::SubmissionsController < ApplicationController
   def show
     @submission = @assignment.submissions.where(student_id: current_student.id)
   end
-  # GET /submissions/new
+
   def new
     @submission = @assignment.submissions.build
   end
-  # POST /submissions or /submissions.json
+
   def create
     @submission = @assignment.submissions.build(submission_params)
     @submission.student_id = @student.id
@@ -32,24 +32,23 @@ class Student::SubmissionsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_student
-      @student = current_student
-    end
+  def set_student
+    @student = current_student
+  end
 
-    def set_course
-      @course = @student.courses.find(params[:course_id])
-    end
+  def set_course
+    @course = @student.courses.find(params[:course_id])
+  end
 
-    def set_assignment
-      @assignment = @course.assignments.find(params[:assignment_id])
-    end
+  def set_assignment
+    @assignment = @course.assignments.find(params[:assignment_id])
+  end
 
-    def set_submission
-      @submission = current_student.submissions.find_by(assignment_id: params[:assignment_id])
-    end
-    # Only allow a list of trusted parameters through.
-    def submission_params
-      params.require(:submission).permit(:title, :file)
-    end
+  def set_submission
+    @submission = current_student.submissions.find_by(assignment_id: params[:assignment_id])
+  end
+
+  def submission_params
+    params.require(:submission).permit(:title, :file)
+  end
 end

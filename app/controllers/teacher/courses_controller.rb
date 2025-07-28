@@ -2,20 +2,20 @@
 class Teacher::CoursesController < ApplicationController
   before_action :set_teacher
   before_action :set_course, only: %i[show edit update destroy]
+  # Mai rename function to ensure_teacher_teaches_course
   before_action :teacher_teaches_course, only: %i[ show edit update destroy ]
-  # GET /teach/courses or /teach/courses.json
+
   def index
-      @courses = @teacher.courses.all
+     @courses = @teacher.courses.all
   end
 
   def new
-    @hello =I18n.t("hello")
     @course = @teacher.courses.new
   end
 
-  # POST /teach/courses or /teach/courses.json
   def create
     @course = @teacher.courses.create(course_params)
+
     respond_to do |format|
       if @course.save
         format.html { redirect_to teacher_course_path(@course), notice: t(".notice") }
@@ -27,7 +27,6 @@ class Teacher::CoursesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /teach/courses/1 or /teach/courses/1.json
   def update
     respond_to do |format|
       if @course.update(course_params)
@@ -40,7 +39,6 @@ class Teacher::CoursesController < ApplicationController
     end
   end
 
-  # DELETE /teach/courses/1 or /teach/courses/1.json
   def destroy
     @course.destroy!
 
@@ -51,7 +49,6 @@ class Teacher::CoursesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_teacher
       @teacher = current_teacher
     end
@@ -60,7 +57,6 @@ class Teacher::CoursesController < ApplicationController
       @course = @teacher.courses.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
     def course_params
       params.require(:course).permit(:name, :description, :avatar)
     end

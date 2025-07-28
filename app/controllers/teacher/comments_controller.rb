@@ -1,5 +1,6 @@
 class Teacher::CommentsController < ApplicationController
   def destroy
+    # Why all of that? The comment was not enough. Comment.find(params[:id])
     @teacher = current_teacher
     @course = @teacher.courses.find(params[:course_id])
     @post = @course.posts.find(params[:post_id])
@@ -10,4 +11,6 @@ class Teacher::CommentsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  # mai also, you need to have ensure_teacher_teaches_course here
 end
