@@ -6,9 +6,8 @@ class Fetcher
   end
 
   def fetch
-     Dir.glob(backups_dir).map do |file|
-       {name: File.basename(file), value: file}
+     Dir.glob(File.join(backups_dir, '*.sql')).map do |file|
+       { name: File.basename(file), value: file }
     end
   end
 end
-

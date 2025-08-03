@@ -3,7 +3,7 @@ class Teacher::CoursesController < ApplicationController
   before_action :set_teacher
   before_action :set_course, only: %i[show edit update destroy]
   # Mai rename function to ensure_teacher_teaches_course
-  before_action :teacher_teaches_course, only: %i[ show edit update destroy ]
+  before_action :ensure_teacher_teaches_course, only: %i[show edit update destroy ]
 
   def index
      @courses = @teacher.courses.all
@@ -61,7 +61,7 @@ class Teacher::CoursesController < ApplicationController
       params.require(:course).permit(:name, :description, :avatar)
     end
 
-    def teacher_teaches_course
+    def ensure_teacher_teaches_course
       unless @course.teacher_id == current_teacher.id
         redirect_to teacher_courses_path, notice: t(".notice")
       end

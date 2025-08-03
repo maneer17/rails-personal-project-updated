@@ -8,6 +8,18 @@ class Assignment < ApplicationRecord
 
   has_rich_text :content
 
+  scope :active, -> { where("deadline > ?", Time.current) }
+
+
+
+  def is_active?
+    deadline > Time.now
+  end
+
+  def is_submitted_by_student?(student)
+    self.submissions.where(student_id: student.id).exists?
+  end
+
   private
 
   def validate_if_deadline_date_cannot_be_in_the_past

@@ -1,0 +1,27 @@
+- progress = (@student_assignments == 0 || @submitted_assignments == 0) ? 0 : ((@submitted_assignments.to_f / @student_assignments) * 100).round  
+- case progress   
+- when progress <= 25
+  - message = t(".progress_25")
+  - class_v = "progress-bar bg-danger"
+- when progress <= 50
+  - message = t(".progress_50")
+  - class_v = "progress-bar bg-warning"
+- when progress <= 75
+  - message = t(".progress_75")
+  - class_v = "progress-bar bg-info"
+- when progress < 90
+  - message = t(".progress_90")
+  - class_v = "progress-bar bg-primary"
+- else
+  - message = t(".progress_100")
+  - class_v = "progress-bar bg-success"
+
+%h1= t(".your_progressbar")
+%br/
+.progress
+  %div{aria: {valuenow: progress}, class: "#{class_v}", role: "progressbar", style: "width: #{progress}%"}
+    = "#{progress}%"
+%br/
+%div{style: "margin-left: 50px"}
+  %h4{style: "color: olivedrab"}= message
+  %h6= t(".finished_assignments", submitted: @submitted_assignments.round, total: @student_assignments.round)

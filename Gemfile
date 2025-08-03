@@ -26,7 +26,7 @@ gem "tty-prompt"
 gem "tty-command"
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
-
+gem "dotenv-rails", groups: [ :development, :test ]
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 # gem "bcrypt", "~> 3.1.7"
 
@@ -48,6 +48,7 @@ group :development, :test do
   gem "html2haml", "~> 2.3"
   gem "faker"
   gem "pry"
+
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false

@@ -106,7 +106,7 @@ en:
     courses:
       unenroll:
         notice: "you were unenrolled from this course ."
-      check_enrollment:
+      ensure_student_enroll_course:
         notice: "enroll in this course to get access to its materials !"  
       index:
         title: "My Courses"
@@ -127,7 +127,7 @@ en:
       fetch_posts:
         comments: "%{num_of_comments} comments"
 
-      progress_bar:
+      your_progress:
         progress_25:  "Getting started is the hardest part, keep going! 🥺"
         progress_50: "You're almost halfway through, don't give up! 💪🏻"
         progress_75: "You're doing amazing, keep going! 🤩"
@@ -136,10 +136,12 @@ en:
         your_progressbar: "Your Progress Bar"
         finished_assignments: "You have finished %{submitted} of %{total} assignments"    
 
-      select:
+      new_courses:
         title: "New courses to enroll"
         enroll_in_course: "enroll in this course"
         turbo_confirm: "Are you sure you want to be a member of %{course_name} course?"
+      enroll:
+        notice: "You are now a member of this course "  
 
       upcoming_assignments:
         title: "Your Upcoming Assignments"
@@ -152,6 +154,8 @@ en:
       assignment: "Assignment"
       deadline: "Deadline"
       index:
+        ensure_student_enroll_course:
+        notice: "enroll in this course to get access to its materials !" 
         title: "assignments of %{course_name}"
       show:
         title: "%{ass_name} assignment"

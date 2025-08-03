@@ -4,9 +4,9 @@
 = render @assignment
 
 %div
-  - if @is_submitted
+  - if @assignment.is_submitted_by_student?(@student)
     = link_to t(".my_submission"), student_course_assignment_submission_path(@course, @assignment)
-  - elsif @is_deadline_finished
+  - elsif not @assignment.is_active?
     %a{style: "color: red;"} Deadline is overdue for this assignment!
   - else
     = button_to t(".new_submission"), new_student_course_assignment_submission_path(@course, @assignment), method: :get, class: "btn btn-primary"

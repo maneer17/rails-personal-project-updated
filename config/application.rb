@@ -6,6 +6,10 @@ require "rails/all"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+if Rails.env.development? || Rails.env.test?
+  Dotenv::Rails.load
+end
+
 module Moodle
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
@@ -13,7 +17,7 @@ module Moodle
     config.i18n.load_path += Dir[Rails.root.join("locales", "*.{rb,yml}")]
 
 
-    # Please, add to the `ignore` list any other `lib` subdirectories that do
+    # Please, add to the `ignore`CCreate a file named .env in the root of your Rails projectreate a file named .env in the root of your Rails project list any other `lib` subdirectories that do
     # not contain `.rb` files, or that should not be reloaded or eager loaded.
     # Common ones are `templates`, `generators`, or `middleware`, for example.
     config.autoload_lib(ignore: %w[assets tasks])

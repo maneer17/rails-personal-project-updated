@@ -9,7 +9,7 @@ class Student::SubmissionsController < ApplicationController
   end
 
   def show
-    @submission = @assignment.submissions.where(student_id: current_student.id)
+    @submission = @assignment.submissions.where(student_id: @student.id)
   end
 
   def new
@@ -18,7 +18,6 @@ class Student::SubmissionsController < ApplicationController
 
   def create
     @submission = @assignment.submissions.build(submission_params)
-    @submission.student_id = @student.id
 
     respond_to do |format|
       if @submission.save
@@ -49,6 +48,6 @@ class Student::SubmissionsController < ApplicationController
   end
 
   def submission_params
-    params.require(:submission).permit(:title, :file)
+    params.require(:submission).permit(:title, :file, :assignment_id, :student_id)
   end
 end

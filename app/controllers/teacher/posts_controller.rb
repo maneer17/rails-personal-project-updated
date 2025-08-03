@@ -1,6 +1,7 @@
 class Teacher::PostsController < ApplicationController
   before_action :set_course
   before_action :set_post, only: %i[ show edit update destroy ]
+  before_action :ensure_teacher_teaches_course
 
   def index
     @posts = @course.posts
@@ -56,5 +57,11 @@ class Teacher::PostsController < ApplicationController
 
     def post_params
       params.require(:post).permit(:title, :body, :course_id)
+    end
+
+    def ensure_teacher_teaches_course
+      unless @course.teacher_id == current_teacher.id
+        redirect_to teacher_courses_path, notice: t(".notice")
+      end
     end
 end

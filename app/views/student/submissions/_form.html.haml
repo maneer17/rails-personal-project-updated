@@ -11,5 +11,7 @@
   %div
     = form.label :file, style: "display: block"
     = form.file_field :file
+    = form.hidden_field :assignment_id, value: @assignment.id
+    = form.hidden_field :student_id, value: current_student.id
   %div
     = form.submit

@@ -2,7 +2,7 @@ class Teacher::AssignmentsController < ApplicationController
   before_action :set_course
   before_action :set_assignment, only: %i[ show edit update destroy ]
   # Mai rename function to ensure_teacher_teaches_course
-  before_action :teacher_teaches_course
+  before_action :ensure_teacher_teaches_course
 
   def index
     @assignments = @course.assignments.all
@@ -29,7 +29,7 @@ class Teacher::AssignmentsController < ApplicationController
   def update
     respond_to do |format|
       if @assignment.update(assignment_params)
-        format.html { redirect_to [:teacher, @course, @assignment ], notice: t(".notice") }
+        format.html { redirect_to [ :teacher, @course, @assignment ], notice: t(".notice") }
         format.json { render :show, status: :ok, location: @assignment }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -57,10 +57,10 @@ class Teacher::AssignmentsController < ApplicationController
   end
 
   def assignment_params
-    params.require(:assignment).permit(:title, :content, :deadline, :course_id)
+    params.require(:assignment).permit(:title, :content, :deadline)
   end
 
-  def teacher_teaches_course
+  def ensure_teacher_teaches_course
     unless @course.teacher_id == current_teacher.id
       redirect_to teacher_courses_path, notice: t(".notice")
     end

@@ -7,56 +7,37 @@ class Student::CoursesController < ApplicationController
   end
 
   # mai your_progress
-  def progress_bar
-    @total = @student.courses.map(&:assignments).flatten.count
-    @submitted = @student.submissions.count
-
-    # mai  move these line to the view and check if student has assignments show the progress, without using begin and rescue
-    begin
-      @progress = ((@submitted/@total) *100).round
-    rescue FloatDomainError
-      @progress = 0
-    end
+  def your_progress
+    @student_assignments = @student.courses.map(&:assignments).flatten.count
+    @submitted_assignments = @student.submissions.count
+    # @student_assignments = @student.courses.joins(:assignment)
   end
 
   # mai Think about how we can develop this function
   def upcoming_assignments
-    @assignments = []
-    courses = @student.courses
-
-    courses.each do |course|
-      course.assignments.each do |assignment|
-        if !current_student.submissions.exists?(assignment_id: assignment.id) &&
-          assignment.deadline > Time.current
-          @assignments << assignment
-        end
-      end
+    # @assignments = @student.courses.map(&:assignments).flatten.filter do |assignment|
+    # assignment.is_active? && !assignment.is_submitted_by_student?(@student)
+    # end
+    @assignments = Assignment.active.joins(:course).
+    where(course: { id: @student.course_ids }).filter do |assignment|
+    !assignment.is_submitted_by_student?(@student)   # how can i solve the problem of checking each submission every time ?
     end
   end
+
+
 
 
   # mai Think about how we can develop this function
   def fetch_posts
-    student_courses = current_student.courses
-    courses_with_posts = student_courses.includes(:posts)
-    all_posts = []
-    courses_with_posts.each do |course|
-      all_posts.concat(course.posts)
-    end
-    @posts = all_posts
+    @posts= Post.joins(:course).where(course: { id: @student.course_ids })
+    # @posts = Post.includes(:course).where(course: { id: @student.course_ids })
+    # I'm just using the post data not the associated course date
+    # in the view so no need for includes (eager loading)
+    # @posts = @student.courses.map(&:posts).flatten
   end
-
   # mai Think about how we can develop this function
-  def select
-    @student = current_student
-    all_courses = Course.all
-    student_courses = @student.courses
-    @courses = []
-    all_courses.each do |course|
-      unless student_courses.include?(course)
-        @courses.append(course)
-      end
-    end
+  def new_courses
+   @courses = Course.where.not(id: @student.course_ids)
   end
 
   def enroll
@@ -64,7 +45,7 @@ class Student::CoursesController < ApplicationController
     current_student.courses << (@course)
 
     respond_to do |format|
-      format.html { redirect_to select_student_courses_path, notice: t(".notice") }
+      format.html { redirect_to new_courses_student_courses_path, notice: t(".notice") }
     end
   end
 

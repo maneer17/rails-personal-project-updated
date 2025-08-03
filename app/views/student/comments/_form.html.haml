@@ -1,5 +1,6 @@
-= simple_form_for([:student, @course, post, post.comments.build]) do |f|
+= simple_form_for [:student,@course,post,post.comments.build] do |f|
   .field
     .control
       = f.input :body, input_html: { class: "textarea" }, wrapper: false, label: false
+      = f.hidden_field :post_id, value: post.id 
   = f.button :submit, "post comment", class: "btn btn-primary"

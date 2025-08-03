@@ -18,15 +18,15 @@ Rails.application.routes.draw do
   namespace :student do
     resources :courses, only: [ :index, :show ] do
       collection do
-        get :select
+        get :new_courses
         get :upcoming_assignments
-        get :progress_bar
+        get :your_progress
         get :fetch_posts
         post :enroll
         delete :unenroll
       end
       resources :posts do
-        resources :comments
+        resources :comments, only: [ :create, :destroy ]
       end
       resources :assignments, only: [ :index, :show ] do
         resources :submissions, only: [ :index, :show, :new, :create ]

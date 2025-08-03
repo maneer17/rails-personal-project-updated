@@ -6,4 +6,9 @@ class Course < ApplicationRecord
   has_many :posts, dependent: :destroy
 
   has_one_attached :avatar, dependent: :destroy
+
+
+  scope :my_courses, ->(student) {
+  joins(:student_courses).where(student_courses: { student_id: student.id })
+  }
 end
