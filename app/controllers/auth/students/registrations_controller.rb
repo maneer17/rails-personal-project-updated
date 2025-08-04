@@ -1,5 +1,5 @@
 
-class Students::RegistrationsController < Devise::RegistrationsController
+class Auth::Students::RegistrationsController < Devise::RegistrationsController
    before_action :configure_sign_up_params, only: [ :create ]
    before_action :configure_account_update_params, only: [ :update ]
 
@@ -11,6 +11,7 @@ class Students::RegistrationsController < Devise::RegistrationsController
    # #POST /resource
    def create
      super
+     Rails.logger.debug params.inspect
    end
 
    # GET /resource/edit
@@ -43,7 +44,6 @@ class Students::RegistrationsController < Devise::RegistrationsController
  def configure_sign_up_params
    devise_parameter_sanitizer.permit(:sign_up, keys: [ :name ])
  end
-
  # #If you have extra params to permit, append them to the sanitizer.
  def configure_account_update_params
    devise_parameter_sanitizer.permit(:account_update, keys: [ :name ])

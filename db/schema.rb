@@ -10,12 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_01_16_071419) do
+ActiveRecord::Schema[7.2].define(version: 2025_05_29_031054) do
   # These are extensions that must be enabled in order to support this database
-  enable_extension "hstore"
   enable_extension "plpgsql"
-  enable_extension "tablefunc"
-  enable_extension "uuid-ossp"
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -91,6 +88,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_01_16_071419) do
     t.bigint "course_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "post"
     t.index ["course_id"], name: "index_posts_on_course_id"
   end
 

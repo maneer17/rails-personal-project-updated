@@ -1,7 +1,21 @@
 Rails.application.routes.draw do
   # config/routes.rb
-  devise_for :teachers, path: "auth/teachers"
-  devise_for :students, path: "auth/students"
+  devise_for :students, path: "auth/students", controllers: {
+  registrations: "auth/students/registrations",
+  sessions: "auth/students/sessions",
+  passwords: "auth/students/passwords",
+  confirmations: "auth/students/confirmations",
+  unlocks: "auth/students/unlocks"
+}
+
+devise_for :teachers, path: "auth/teachers", controllers: {
+  registrations: "auth/teachers/registrations",
+  sessions: "auth/teachers/sessions",
+  passwords: "auth/teachers/passwords",
+  confirmations: "auth/teachers/confirmations",
+  unlocks: "auth/teachers/unlocks"
+}
+
 
   namespace :teacher do
     resources :courses do
