@@ -6,6 +6,9 @@ class Student::PostsController < ApplicationController
   def index
     @posts = @course.posts
   end
+  def show
+    @post.comments.build
+  end
 
   private
   def set_student

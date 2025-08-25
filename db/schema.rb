@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_05_29_031054) do
+ActiveRecord::Schema[7.2].define(version: 2025_08_25_065905) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -64,13 +64,14 @@ ActiveRecord::Schema[7.2].define(version: 2025_05_29_031054) do
   end
 
   create_table "comments", force: :cascade do |t|
-    t.bigint "student_id", null: false
     t.bigint "post_id", null: false
     t.text "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "commenter_type", null: false
+    t.bigint "commenter_id", null: false
+    t.index ["commenter_type", "commenter_id"], name: "index_comments_on_commenter"
     t.index ["post_id"], name: "index_comments_on_post_id"
-    t.index ["student_id"], name: "index_comments_on_student_id"
   end
 
   create_table "courses", force: :cascade do |t|
@@ -141,7 +142,6 @@ ActiveRecord::Schema[7.2].define(version: 2025_05_29_031054) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "assignments", "courses"
   add_foreign_key "comments", "posts"
-  add_foreign_key "comments", "students"
   add_foreign_key "courses", "teachers"
   add_foreign_key "posts", "courses"
   add_foreign_key "student_courses", "courses"

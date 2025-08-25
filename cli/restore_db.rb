@@ -1,10 +1,9 @@
-require 'dotenv/load'
 require_relative 'db_restorers/fetcher.rb'
 require_relative 'db_restorers/select.rb'
 require_relative 'db_restorers/restore.rb'
 
 # Mai this is your local machine path, This will not work on the server.
-choices = Fetcher.new(ENV['DB_BACKUPS']).fetch
+choices = Fetcher.new(Rails.application.credentials.dig(:development, :DB_BACKUPS)).fetch
 choice = Select.new(choices).select
 
 Restore.new("moodle_development", choice).restore

@@ -12,5 +12,5 @@
     %tbody
       - @assignments.each do |assignment|
         %tr
-          %td= link_to assignment.title, student_course_assignment_path(assignment.course_id, assignment.id)
-          %td= assignment.deadline
+          %td= link_to assignment[:title], student_course_assignment_path(assignment[:course_id], assignment[:assignment_id])
+          %td= assignment[:deadline]

@@ -1,7 +1,6 @@
 class Teacher::AssignmentsController < ApplicationController
   before_action :set_course
   before_action :set_assignment, only: %i[ show edit update destroy ]
-  # Mai rename function to ensure_teacher_teaches_course
   before_action :ensure_teacher_teaches_course
 
   def index

@@ -2,7 +2,7 @@
 class Teacher::CoursesController < ApplicationController
   before_action :set_teacher
   before_action :set_course, only: %i[show edit update destroy]
-  # Mai rename function to ensure_teacher_teaches_course
+
   before_action :ensure_teacher_teaches_course, only: %i[show edit update destroy ]
 
   def index

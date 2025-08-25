@@ -13,5 +13,4 @@
             = post.body
           .comment-count
             %span.tag.is-rounded
-              
-              = t(".comments", count: post.comments.count)
+            = post.comments.count == 0 ? t(".comments.zero") : post.comments.count == 1 ? t(".comments.one"): t(".comments.other", count: post.comments.count)

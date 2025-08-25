@@ -3,9 +3,11 @@ class Student::CommentsController < ApplicationController
 
   def create
     @comment = Comment.new(comment_params)
-    @comment.student_id = current_student.id
     if @comment.save
       redirect_to student_course_posts_path(@comment.post.course)
+    else
+      Rails.logger.debug @comment.errors.full_messages.inspect  # 👈 add this
+      redirect_to student_course_posts_path(Course.find(params[:course_id])), alert: "Failed: #{@comment.errors.full_messages.join(', ')}"
     end
   end
 
@@ -21,7 +23,7 @@ class Student::CommentsController < ApplicationController
 
   private
   def comment_params
-    params.require(:comment).permit(:body, :post_id)
+    params.require(:comment).permit(:body, :post_id, :commenter_id, :commenter_type)
   end
   def ensure_student_enroll_course
     unless current_student.student_courses.where(course_id: params[:course_id]).exists?

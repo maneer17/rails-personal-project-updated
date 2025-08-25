@@ -9,6 +9,7 @@ class Teacher::PostsController < ApplicationController
 
   def new
     @post = @course.posts.build
+    @post.comments.build
   end
 
   def create
@@ -56,7 +57,7 @@ class Teacher::PostsController < ApplicationController
     end
 
     def post_params
-      params.require(:post).permit(:title, :body, :course_id)
+      params.require(:post).permit(:title, :body, :course_id, comments_attributes: [ :body, :commenter_type, :commenter_id, :_destroy ])
     end
 
     def ensure_teacher_teaches_course

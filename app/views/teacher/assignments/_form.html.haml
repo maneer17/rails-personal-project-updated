@@ -2,8 +2,7 @@
  data: { controller: "flatpickr" } do |form|
   - if @assignment.errors.any?
     %div{style: "color: red"}
-      %h2
-        =t("form.error_message", count: @assignment.errors.count, model: "assignment" )
+      %h2= submission.errors.count==1 ? t("form.error_message.one", model: "assignment" ):t("form.error_message.other", count: @assignment.errors.count, model: "assignment" )
       %ul
         - @assignment.errors.each do |error|
           %li= error.full_message

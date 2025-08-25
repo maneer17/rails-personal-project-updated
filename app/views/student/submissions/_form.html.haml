@@ -1,7 +1,7 @@
 = form_with(model: [ :student, @course,@assignment, submission ]) do |form|
   - if submission.errors.any?
     %div{:style => "color: red"}
-      %h2= t("form.error_message", count: submission.errors.count, model: "submission" )
+      %h2= submission.errors.count==1 ? t("form.error_message.one", model: "submission" ):t("form.error_message.other", count: submission.errors.count, model: "submission" )
       %ul
         - submission.errors.full_messages.each do |error|
           %li= error

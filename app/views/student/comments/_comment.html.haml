@@ -4,10 +4,9 @@
       .content
         %p{style: "margin: 10px;"}
           = comment.body
-          by
-          %span.badge.rounded-pill.bg-secondary= Student.find(comment.student_id).name
+        
 
-      - if current_student == comment.student
+      - if current_student == comment.commenter
         = button_to "Destroy this comment", [:student, @course, @post, comment],
                   method: :delete,
                   class: "btn btn-danger",
