@@ -12,6 +12,7 @@ class Teacher::CommentsController < ApplicationController
 
   private
   def ensure_teacher_teaches_course
+      @course = Course.find(params[:course_id])
       unless @course.teacher_id == current_teacher.id
         redirect_to teacher_courses_path, notice: t(".notice")
       end

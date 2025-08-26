@@ -4,7 +4,7 @@
       .content
         %p{style: "margin: 10px;"}
           = comment.body
-          %span.badge.rounded-pill.bg-secondary = comment.student.name
+          %span.badge.rounded-pill.bg-secondary= comment.commenter.name
       = button_to t("delete"),
         [:teacher, @course, @post, comment],
         class: "badge rounded-pill bg-danger",

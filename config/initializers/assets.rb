@@ -4,7 +4,7 @@
 Rails.application.config.assets.version = "1.0"
 # config/initializers/assets.rb
 Rails.application.config.assets.precompile += %w[bootstrap.min.js popper.js jquery.min.js]
-
+Rails.application.config.assets.precompile += %w( jquery.js )
 # Add additional assets to the asset load path.
 # Rails.application.config.assets.paths << Emoji.images_path
 

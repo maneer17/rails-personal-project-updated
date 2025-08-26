@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_08_25_065905) do
+ActiveRecord::Schema[7.2].define(version: 2025_08_26_074156) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -148,4 +148,18 @@ ActiveRecord::Schema[7.2].define(version: 2025_08_25_065905) do
   add_foreign_key "student_courses", "students"
   add_foreign_key "submissions", "assignments"
   add_foreign_key "submissions", "students"
+
+  create_view "upcoming_assignments", sql_definition: <<-SQL
+      SELECT sc.course_id,
+      a.id AS assignment_id,
+      a.title,
+      a.deadline,
+      sc.student_id
+     FROM ((((student_courses sc
+       JOIN students s ON ((s.id = sc.student_id)))
+       JOIN courses c ON ((c.id = sc.course_id)))
+       JOIN assignments a ON ((a.course_id = c.id)))
+       LEFT JOIN submissions sub ON (((sub.student_id = s.id) AND (sub.assignment_id = a.id))))
+    WHERE ((a.deadline > now()) AND (sub.id IS NULL));
+  SQL
 end

@@ -16,5 +16,4 @@
           .content
             = post.body.to_plain_text
           .comment-count
-            %span.tag.is-rounded
-              = t(".comments",num_of_comments: post.comments.count )
+          %span.tag.is-rounded= post.comments.count==1?t(".comments.one"):post.comments.count==0?t(".comments.zero"):t(".comments.other", count: post.comments.count)

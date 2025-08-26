@@ -36,6 +36,8 @@ gem "tzinfo-data", platforms: %i[ windows jruby ]
 gem "bootsnap", require: false
 gem "dartsass-sprockets"
 gem "jquery-rails"
+gem "cocoon"
+gem "scenic"
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 gem "image_processing", "~> 1.2"
 gem "bootstrap", "~> 5.3.3"

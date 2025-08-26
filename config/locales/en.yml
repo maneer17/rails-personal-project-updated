@@ -99,6 +99,10 @@ en:
       index:
         posts_of_Xcourse: "Posts of %{course_name} course"
         new_post: "Create a new post"
+        comments:
+          zero: "no comments yet "
+          one: "1 comment"
+          other: "%{count} comments"   
       show:
         back_to_posts: "Back To Posts"
 

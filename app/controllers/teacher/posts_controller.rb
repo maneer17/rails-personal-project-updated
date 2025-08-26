@@ -12,6 +12,10 @@ class Teacher::PostsController < ApplicationController
     @post.comments.build
   end
 
+  def edit
+    @post.comments.build if @post.comments.empty?
+  end
+
   def create
     @post = @course.posts.create(post_params)
 

@@ -11,3 +11,4 @@ pin "@popperjs/core", to: "popper.js", preload: true
 pin "flatpickr" # @4.6.13
 pin "trix"
 pin "@rails/actiontext", to: "actiontext.esm.js"
+pin "@nathanvda/cocoon", to: "@nathanvda--cocoon.js" # @1.2.14
