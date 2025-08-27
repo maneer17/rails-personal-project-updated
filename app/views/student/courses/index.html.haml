@@ -7,7 +7,7 @@
 #courses
   .container
     .row.row-cols-1.row-cols-md-3.g-3
-      - @courses.each do |course|
+      - courses.each do |course|
         .col
           .card{style: "height: 100%; margin-left: 20px; border-bottom-color: black;"}
             = render course
@@ -15,10 +15,10 @@
             .row.g-2{style: "margin: 10px 0;"}
               / Buttons aligned horizontally
               .col-auto
-                = button_to t(".assignments"), student_course_assignments_path(course.id),
+                = button_to t(".assignments"), student_course_assignments_path(course),
                               method: :get, class: "btn btn-primary"
               .col-auto
-                = button_to t(".posts"), student_course_posts_path(course.id),
+                = button_to t(".posts"), student_course_posts_path(course),
                               method: :get, class: "btn btn-primary"
 
             / Unenroll button below

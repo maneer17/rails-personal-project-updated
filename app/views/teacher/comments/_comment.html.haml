@@ -6,7 +6,7 @@
           = comment.body
           %span.badge.rounded-pill.bg-secondary= comment.commenter.name
       = button_to t("delete"),
-        [:teacher, @course, @post, comment],
+        [:teacher, course, post, comment],
         class: "badge rounded-pill bg-danger",
         method: :delete,
         data: { confirm: 'Are you sure?' }

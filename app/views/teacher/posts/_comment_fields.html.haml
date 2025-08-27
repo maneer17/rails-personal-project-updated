@@ -3,6 +3,6 @@
   .my-5
     = f.label :body
     = f.text_field :body, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-1 w-full"
-    = f.hidden_field :commenter_id, value: current_teacher.id
+    = f.hidden_field :commenter_id, value: teacher.id
     = f.hidden_field :commenter_type, value: 'Teacher'
     = link_to_remove_association "remove comment", f  

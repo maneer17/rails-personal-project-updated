@@ -1,7 +1,7 @@
 %p{style: "color: green"}= notice
 - content_for :title, t(".title")
 %h1
-  #{t(".assignments_for")} #{@course.name}
+  #{t(".assignments_for")} #{course.name}
 #assignments
   %table.table
     %thead
@@ -9,9 +9,9 @@
         %th{scope: "col"}=t(".assignment")
         %th{scope: "col"}=t(".deadline")
     %tbody
-      - @assignments.each do |assignment|
+      - assignments.each do |assignment|
         %tr
-          %td= link_to assignment.title, [:teacher, @course, assignment]
+          %td= link_to assignment.title, [:teacher, course, assignment]
           - if assignment.deadline
             %td= assignment.deadline.strftime("%B %d, %Y %I:%M %p")
 = button_to t(".new_assignment"),

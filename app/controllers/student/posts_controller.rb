@@ -1,25 +1,14 @@
 class Student::PostsController < ApplicationController
-  before_action :set_student
-  before_action :set_course
-  before_action :set_post, only: :show
-
-  def index
-    @posts = @course.posts
-  end
-  def show
-    @post.comments.build
-  end
+  expose :course
+  expose :post, parent: :course
+  expose :posts, from: :course
+  expose :student, :current_student
+  before_action :ensure_student_enroll_course
 
   private
-  def set_student
-    @student = current_student
-  end
-
-  def set_course
-    @course = @student.courses.find(params[:course_id])
-  end
-
-  def set_post
-    @post = @course.posts.find(params[:id])
-  end
+    def ensure_student_enroll_course
+      unless student.student_courses.where(course_id: course.id).exists?
+        redirect_to new_courses_student_courses_path, notice: t(".notice")
+      end
+    end
 end

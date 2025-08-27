@@ -83,7 +83,8 @@ en:
         back_to_assignments: "Back to assignments"
 
     submissions:
-      back_to_assignment: "Back To Assignment" 
+      index:
+        back_to_assignment: "Back To Assignment" 
 
     posts:
       back_to_posts: "Back To Posts"
@@ -165,16 +166,13 @@ en:
         ass_deadline: "Deadline"
 
     assignments:
-      back_to_assignments: "back to assignments"
-      back_to_course: "Back to course"
-      
-
       index:
         ensure_student_enroll_course:
         notice: "enroll in this course to get access to its materials !" 
         title: "assignments of %{course_name}"
         assignment: "Assignment"
         deadline: "Deadline"
+        back_to_course: "Back to course"
       show:
         title: "%{ass_name} assignment"
         my_submission: "My Submission"

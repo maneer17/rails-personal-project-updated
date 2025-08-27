@@ -1,8 +1,8 @@
 - content_for :title, t(".title")
 %h1 Editing submission
-= render "form", submission: @submission
+= render "form"
 %br/
 %div
-  = link_to t(".show_submission"), @submission
+  = link_to t(".show_submission"), submission
   |
   \#{link_to "Back to submissions", submissions_path}

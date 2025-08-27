@@ -1,9 +1,9 @@
 %p{style: "color: green"}= notice
 - content_for :title, "Submissions"
 %h2{style: "background-color: lightblue; margin-left: 30px"}
-  Submissions for #{@assignment.title} assignment
+  Submissions for #{assignment.title} assignment
 %p{style: "margin-left: 60px"}
-  = @count
+  = submissions.count
   students submitted this assignment so far
 #submissions
   %table.table.table-bordered.border-primary
@@ -15,9 +15,9 @@
         %th{scope: "col"} Submission file
         %th{scope: "col"} Submitted at:
     %tbody
-      - @submissions.each do |submission|
+      - submissions.each do |submission|
         = render submission
 = button_to t(".back_to_assignment"), 
-  teacher_course_assignment_path(@assignment.course_id, @assignment),
+  teacher_course_assignment_path(course, assignment),
   method: :get,
   class: "btn btn-info"

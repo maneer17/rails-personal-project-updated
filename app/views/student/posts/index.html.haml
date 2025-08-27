@@ -1,14 +1,14 @@
-- content_for :title, t(".title",course_name: @course_name)
+- content_for :title, t(".title",course_name: course.name)
 %h2
-  =t(".title",course_name: @course_name)
+  =t(".title",course_name: course.name)
 .section
   .container
-    - @posts.each do |post|
+    - posts.each do |post|
       .card
         .card-content{style:  "margin: 10px;"}
           .media
             .media-content
-              %p.title.is-7= link_to post.title,  student_course_post_path(@course, post)
+              %p.title.is-7= link_to post.title,  student_course_post_path(course, post)
           .content
             = post.body
           .comment-count

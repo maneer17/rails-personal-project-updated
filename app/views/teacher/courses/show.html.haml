@@ -1,17 +1,17 @@
 %p{style: "color: green"}= notice
-%h2{style: "color: #666666; margin-left: 20px"}= @course.name
-%p{style: "margin-left: 40px"}= @course.description
+%h2{style: "color: #666666; margin-left: 20px"}= course.name
+%p{style: "margin-left: 40px"}= course.description
 .container
   .row.justify-content-start
     .col-2
       = button_to t("edit"), 
-        edit_teacher_course_path(@course),
+        edit_teacher_course_path(course),
         method: :get, 
         class: "btn btn-warning"
     .col-2
       = button_to t("delete"), 
-        [:teacher, @course], 
+        [:teacher, course], 
         method: :delete, 
         class: "btn btn-danger"
 %p
-  = "#{@course.students.count} #{t('.enrolled_in_this_course')}"
+  = "#{course.students.count} #{t('.enrolled_in_this_course')}"

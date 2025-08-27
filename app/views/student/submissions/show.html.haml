@@ -1,4 +1,4 @@
 %p{:style => "color: green"}= notice
-= render @submission
+= render submission
 %div
-  = link_to t(".back_to_assignment"), student_course_assignment_path(@course,@assignment)
+  = link_to t(".back_to_assignment"), student_course_assignment_path(course,assignment)

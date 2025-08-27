@@ -1,14 +1,14 @@
-- content_for :title, t(".title",ass_name: @assignment.title)
+- content_for :title, t(".title",ass_name: assignment.title)
 %p{style: "color: green"}= notice
 
-= render @assignment
+= render assignment
 
 %div
-  - if @assignment.is_submitted_by_student?(@student)
-    = link_to t(".my_submission"), student_course_assignment_submission_path(@course, @assignment)
-  - elsif not @assignment.is_active?
+  - if assignment.is_submitted_by_student?(student)
+    = link_to t(".my_submission"), student_course_assignment_submission_path(course, assignment)
+  - elsif not assignment.is_active?
     %a{style: "color: red;"} Deadline is overdue for this assignment!
   - else
-    = button_to t(".new_submission"), new_student_course_assignment_submission_path(@course, @assignment), method: :get, class: "btn btn-primary"
+    = button_to t(".new_submission"), new_student_course_assignment_submission_path(course, assignment), method: :get, class: "btn btn-primary"
 
   = link_to t(".back_to_assignments"), student_course_assignments_path

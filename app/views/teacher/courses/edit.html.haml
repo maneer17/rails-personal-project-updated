@@ -1,8 +1,8 @@
 - content_for :title,t(".title")
 %h1 Editing course 
-= render "form", course: @course
+= render "form"
 %br/
 %div
-  = link_to t("show"), [:teacher, @course]
+  = link_to t("show"), [:teacher, course]
   |
   \#{link_to t(".back_to_courses"), teacher_courses_path}

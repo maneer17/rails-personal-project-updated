@@ -1,8 +1,8 @@
 - content_for :title, t(".title")
 %h1= t(".title")
-= render "form", post: [:teach, @post]
+= render "form"
 %br/
 %div
-  = link_to t("show"), [:teacher,@course,@post]
+  = link_to t("show"), [:teacher,course,post]
   |
   \#{link_to t(".back_to_posts"), teacher_course_posts_path}
