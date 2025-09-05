@@ -1,0 +1,5 @@
+%h1= "Hi"
+%p= "New Assignment has been added to the #{@course.name} course"
+=link_to("see the new assignment here 👇🏻 ",
+teacher_course_assignment_url(@course,@assignment, host: "http://127.0.0.1:3000" ))
+%p= "Don't forget to do it before #{@assignment.deadline}"

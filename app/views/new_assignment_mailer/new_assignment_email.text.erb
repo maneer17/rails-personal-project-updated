@@ -1,0 +1,8 @@
+Hi,
+
+New Assignment has been added to the <%= @course.name %> course.
+
+See the new assignment here:
+<%= teacher_course_assignment_url(@course, @assignment, host: "http://127.0.0.1:3000") %>
+
+Don't forget to do it before <%= @assignment.deadline %>.
