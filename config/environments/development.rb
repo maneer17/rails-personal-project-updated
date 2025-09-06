@@ -42,6 +42,9 @@ Rails.application.configure do
 # Disable caching for Action Mailer templates even if Action Controller
 # caching is enabled.
 config.action_mailer.delivery_method = :smtp
+config.action_mailer.default_url_options = {
+   host: "http://127.0.0.1:3000"
+}
 config.action_mailer.smtp_settings = { address: "127.0.0.1", port: 1025, default_url_options: { host: 9000 } }
 config.action_mailer.raise_delivery_errors = false
 
