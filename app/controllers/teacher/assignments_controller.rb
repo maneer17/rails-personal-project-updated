@@ -1,4 +1,5 @@
 class Teacher::AssignmentsController < ApplicationController
+  include AssignmentNotifier
   expose :teacher, :current_teacher
   expose :course
   expose :assignment, parent: :course

@@ -4,6 +4,6 @@ class Student < ApplicationRecord
   has_many :submissions
   has_many :comments, as: :commenter
 
-  devise :database_authenticatable, :registerable,
+  devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :validatable
 end
