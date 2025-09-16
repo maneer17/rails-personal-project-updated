@@ -1,7 +1,6 @@
 require 'faker'
 
 20.times do
-  # Mai: remove ().id & to_a, just Course.all.sample.id
   course_id = Course.all.sample.id
   deadline = Faker::Time.between(from: DateTime.now + 10, to: DateTime.now + 100, format: :long)
 

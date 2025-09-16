@@ -5,12 +5,18 @@ class Student::CommentsController < ApplicationController
   before_action :ensure_student_enroll_course
 
   def create
+  respond_to do |format|
     if comment.save
-      redirect_to student_course_posts_path(course)
+      format.turbo_stream
+      format.html { redirect_to student_course_post_path(post), notice: "Comment was successfully created." }
+      format.json { render :show, status: :created, location: comment }
     else
-      redirect_to student_course_posts_path(course), alert: "Failed: #{comment.errors.full_messages.join(', ')}"
+      format.turbo_stream
+      format.html { render :new, status: :unprocessable_entity }
+      format.json { render json: @comment.errors, status: :unprocessable_entity }
     end
   end
+end
 
   def destroy
     comment.destroy

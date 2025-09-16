@@ -13,4 +13,5 @@
         = render post.comments
         .comment-form
           %h3.subtitle.is-3= t(".leave_comment")
+          = turbo_frame_tag "post_comment_form"
           = render "student/comments/form"
