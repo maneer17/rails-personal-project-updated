@@ -1,17 +1,18 @@
-%p{:style => "color: green"}= notice
+= turbo_stream_from post
 %section.section
   .container
     %nav.level
     .content
-      %strong{:style => "color:blue;"}= post.title
+      %strong{style: "color:blue;"}= post.title
       = post.body
-    %hr/
+
+    %hr
     %section.section.comments
       .container
-        %strong.subtitle.is-5{:style => "color: green ;"}= t(".students_comments")
-        %p
-        = render post.comments
+        %strong.subtitle.is-5{style: "color: green;"}= t(".students_comments")
+        #comments
+          = render post.comments
+
         .comment-form
-          %h3.subtitle.is-3= t(".leave_comment")
-          = turbo_frame_tag "post_comment_form"
-          = render "student/comments/form"
+          %turbo-frame#create_comment
+            = link_to t(".leave_comment"),new_student_course_post_comment_path(course,post)

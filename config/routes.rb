@@ -23,6 +23,7 @@ devise_for :teachers, path: "auth/teachers", controllers: {
         resources :submissions, only: [ :index, :show ]
       end
       resources :posts do
+        resources :comments
       end
     end
   end
@@ -39,7 +40,7 @@ devise_for :teachers, path: "auth/teachers", controllers: {
         delete :unenroll
       end
       resources :posts do
-        resources :comments, only: [ :create, :destroy ]
+        resources :comments
       end
       resources :assignments, only: [ :index, :show ] do
         resources :submissions, only: [ :index, :show, :new, :create ]

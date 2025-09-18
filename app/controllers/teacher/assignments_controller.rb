@@ -33,7 +33,6 @@ class Teacher::AssignmentsController < ApplicationController
 
   def destroy
     assignment.destroy!
-
     respond_to do |format|
       format.html { redirect_to teacher_course_assignments_path, status: :see_other, notice: t(".notice") }
       format.json { head :no_content }

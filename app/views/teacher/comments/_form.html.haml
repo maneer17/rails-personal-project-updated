@@ -1,8 +1,0 @@
-= form_with(model: [post, comment]) do |form|
-  = render "shared/error_messages", resource: form.object
-
-  .form-group
-    = form.label :content, "Reply", class: "form-label"
-    = form.text_area :content, class: "form-input", placeholder: "Type a response"
-
-  = form.submit class: "btn btn-primary"

@@ -1,3 +1,4 @@
+= turbo_stream_from post
 %p{style: "color: green"}= notice
 
 %section.section
@@ -16,9 +17,13 @@
       method: :delete,
       class: "btn btn-danger"
 
-%hr/
+    %hr
+    %section.section.comments
+      .container
+        %strong.subtitle.is-5{style: "color: green;"} students comments
+        #comments
+          = render post.comments
 
-%section.section.comments
-  .container
-    %strong.subtitle.is-5 Students Comments for this post:
-    = render post.comments
+        .comment-form
+          %turbo-frame#create_comment
+            = link_to ("leave comment"),new_teacher_course_post_comment_path(course,post)
