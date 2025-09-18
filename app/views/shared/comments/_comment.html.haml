@@ -1,3 +1,5 @@
+-# when i would render this partial from other views :
+-# render "shared/comments/comment", locals: {role: :student/:teacher accordingly }
 %div{id: dom_id(comment)}
   .box
     %article.media
@@ -20,7 +22,7 @@
 
               .col-2
                 %turbo-frame{id: "edit #{dom_id(comment)}"}          
-                  = link_to edit_student_course_post_comment_path(course, post, comment),
+                  = link_to [:edit, role, course, post, comment],
 
                       class: "btn btn-link p-0 text-primary d-flex align-items-center gap-1" do
                     Edit
