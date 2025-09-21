@@ -2,6 +2,7 @@
   = simple_form_for [:student,course,post,comment] do |f|
     .field
       .control
+        %trubo_frame{id: "edit_#{dom_id(comment)}"}
         = f.input :body, input_html: { class: "textarea" }, wrapper: false, label: false
         = f.hidden_field :post_id, value: post.id 
         = f.hidden_field :commenter_id, value: current_student.id
