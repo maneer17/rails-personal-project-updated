@@ -20,10 +20,10 @@
     %hr
     %section.section.comments
       .container
-        %strong.subtitle.is-5{style: "color: green;"} students comments
+        %strong.subtitle.is-5{style: "color: green;"}= ("students_comments")
         #comments
-          = render post.comments
+          = render partial: "shared/comments/comment", collection: post.comments, locals: { role: :teacher }
 
         .comment-form
           %turbo-frame#create_comment
-            = link_to ("leave comment"),new_teacher_course_post_comment_path(course,post)
+            = link_to t(".leave_comment"),new_teacher_course_post_comment_path(course,post)

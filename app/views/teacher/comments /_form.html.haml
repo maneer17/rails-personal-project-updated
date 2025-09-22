@@ -1,9 +1,0 @@
-#comment_form
-  = simple_form_for [:teacher,course,post,comment] do |f|
-    .field
-      .control
-        = f.input :body, input_html: { class: "textarea" }, wrapper: false, label: false
-        = f.hidden_field :post_id, value: post.id 
-        = f.hidden_field :commenter_id, value: current_teacher.id
-        = f.hidden_field :commenter_type, value: 'Student'
-    = f.button :submit, class: "btn btn-primary"

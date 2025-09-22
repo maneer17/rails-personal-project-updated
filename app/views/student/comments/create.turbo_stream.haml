@@ -1,5 +1,5 @@
 = turbo_stream.append "comments" do
-  = render "student/comments/comment"
+  = render "shared/comments/comment", role: :student
  
 = turbo_stream.replace "comment_form" do 
   = link_to "leave a comment", new_student_course_post_comment_path(course, post)

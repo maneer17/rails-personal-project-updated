@@ -11,7 +11,7 @@
       .container
         %strong.subtitle.is-5{style: "color: green;"}= t(".students_comments")
         #comments
-          = render post.comments
+          = render partial: "shared/comments/comment", collection: post.comments, locals: { role: :student }
 
         .comment-form
           %turbo-frame#create_comment
