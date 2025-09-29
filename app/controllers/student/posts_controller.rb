@@ -5,6 +5,10 @@ class Student::PostsController < ApplicationController
   expose :student, :current_student
   before_action :ensure_student_enroll_course
 
+  def show
+    post.comments.new
+  end
+
   private
     def ensure_student_enroll_course
       unless student.student_courses.where(course_id: course.id).exists?

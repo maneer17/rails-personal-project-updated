@@ -7,6 +7,9 @@ class Teacher::PostsController < ApplicationController
   def new
     post.comments.build
   end
+  def show
+    post.comments.new
+  end
 
   def edit
     post.comments.build if post.comments.empty?

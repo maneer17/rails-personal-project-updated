@@ -23,7 +23,6 @@ devise_for :teachers, path: "auth/teachers", controllers: {
         resources :submissions, only: [ :index, :show ]
       end
       resources :posts do
-        resources :comments
       end
     end
   end

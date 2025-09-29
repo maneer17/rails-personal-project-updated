@@ -55,11 +55,10 @@ ActiveRecord::Schema[7.2].define(version: 2025_08_26_074156) do
   create_table "assignments", force: :cascade do |t|
     t.string "title"
     t.text "content"
+    t.date "deadline"
     t.bigint "course_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.datetime "deadline"
-    t.integer "likes", default: 1
     t.index ["course_id"], name: "index_assignments_on_course_id"
   end
 
@@ -89,7 +88,6 @@ ActiveRecord::Schema[7.2].define(version: 2025_08_26_074156) do
     t.bigint "course_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "post"
     t.index ["course_id"], name: "index_posts_on_course_id"
   end
 
@@ -105,12 +103,17 @@ ActiveRecord::Schema[7.2].define(version: 2025_08_26_074156) do
   create_table "students", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
+    t.string "name", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.string "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string "unconfirmed_email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "name"
+    t.index ["confirmation_token"], name: "index_students_on_confirmation_token", unique: true
     t.index ["email"], name: "index_students_on_email", unique: true
     t.index ["reset_password_token"], name: "index_students_on_reset_password_token", unique: true
   end
@@ -118,9 +121,9 @@ ActiveRecord::Schema[7.2].define(version: 2025_08_26_074156) do
   create_table "submissions", force: :cascade do |t|
     t.bigint "student_id", null: false
     t.bigint "assignment_id", null: false
+    t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "title"
     t.index ["assignment_id"], name: "index_submissions_on_assignment_id"
     t.index ["student_id"], name: "index_submissions_on_student_id"
   end
@@ -128,12 +131,17 @@ ActiveRecord::Schema[7.2].define(version: 2025_08_26_074156) do
   create_table "teachers", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
+    t.string "name", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.string "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string "unconfirmed_email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "name"
+    t.index ["confirmation_token"], name: "index_teachers_on_confirmation_token", unique: true
     t.index ["email"], name: "index_teachers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_teachers_on_reset_password_token", unique: true
   end
