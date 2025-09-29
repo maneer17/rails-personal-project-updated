@@ -6,13 +6,4 @@
       %strong{style: "color:blue;"}= post.title
       = post.body
 
-    %hr
-    %section.section.comments
-      .container
-        %strong.subtitle.is-5{style: "color: green;"}= t(".students_comments")
-        #comments
-          = render partial: "shared/comments/comment", collection: post.comments, locals: { role: :student }
-
-        .comment-form
-          %turbo-frame#create_comment
-            = link_to t(".leave_comment"),new_student_course_post_comment_path(course,post)
+= render template: "shared/comments/index", locals: {comments: post.comments,role: :student,new_path: new_student_course_post_comment_path(course,post)}

@@ -17,13 +17,5 @@
       method: :delete,
       class: "btn btn-danger"
 
-    %hr
-    %section.section.comments
-      .container
-        %strong.subtitle.is-5{style: "color: green;"}= ("students_comments")
-        #comments
-          = render partial: "shared/comments/comment", collection: post.comments, locals: { role: :teacher }
-
-        .comment-form
-          %turbo-frame#create_comment
-            = link_to t(".leave_comment"),new_teacher_course_post_comment_path(course,post)
+    = render template: "shared/comments/index", locals: {comments: post.comments, role: :teacher, new_path: new_teacher_course_post_comment_path(course,post)}
+      

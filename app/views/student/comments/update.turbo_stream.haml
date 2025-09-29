@@ -1,2 +1,4 @@
-=turbo_stream.update comment do
+=turbo_stream.replace comment do
     = render partial: "shared/comments/comment", locals: {role: :student}
+= render_turbo_stream_flash_messages  
+    

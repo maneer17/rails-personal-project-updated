@@ -10,10 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_09_25_044227) do
-  create_schema "1"
-  create_schema "9"
-
+ActiveRecord::Schema[7.2].define(version: 2025_08_26_073458) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -66,13 +63,14 @@ ActiveRecord::Schema[7.2].define(version: 2025_09_25_044227) do
   end
 
   create_table "comments", force: :cascade do |t|
-    t.bigint "student_id", null: false
     t.bigint "post_id", null: false
     t.text "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "commenter_type", null: false
+    t.bigint "commenter_id", null: false
+    t.index ["commenter_type", "commenter_id"], name: "index_comments_on_commenter"
     t.index ["post_id"], name: "index_comments_on_post_id"
-    t.index ["student_id"], name: "index_comments_on_student_id"
   end
 
   create_table "courses", force: :cascade do |t|
@@ -91,12 +89,6 @@ ActiveRecord::Schema[7.2].define(version: 2025_09_25_044227) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["course_id"], name: "index_posts_on_course_id"
-  end
-
-  create_table "projects", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "student_courses", force: :cascade do |t|
@@ -154,17 +146,10 @@ ActiveRecord::Schema[7.2].define(version: 2025_09_25_044227) do
     t.index ["reset_password_token"], name: "index_teachers_on_reset_password_token", unique: true
   end
 
-  create_table "tenants", force: :cascade do |t|
-    t.string "subdomain"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "assignments", "courses"
   add_foreign_key "comments", "posts"
-  add_foreign_key "comments", "students"
   add_foreign_key "courses", "teachers"
   add_foreign_key "posts", "courses"
   add_foreign_key "student_courses", "courses"
@@ -182,7 +167,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_09_25_044227) do
        JOIN students s ON ((s.id = sc.student_id)))
        JOIN courses c ON ((c.id = sc.course_id)))
        JOIN assignments a ON ((a.course_id = c.id)))
-       LEFT JOIN submissions sub ON (((sub.student_id = s.id) AND (sub.assignment_id = a.id))))
-    WHERE ((a.deadline > now()) AND (sub.id IS NULL));
+       LEFT JOIN submissions su ON (((su.student_id = s.id) AND (su.assignment_id = a.id))))
+    WHERE ((a.deadline > now()) AND (su.id IS NULL));
   SQL
 end
