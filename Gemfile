@@ -2,14 +2,16 @@ source "https://rubygems.org"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.2.2"
+
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
-gem "sprockets-rails"
+gem "propshaft"
 # Use postgresql as the database for Active Record
 gem "pg", "~> 1.1"
 gem "haml"
 gem "haml-rails", "~> 2.0"
 gem "simple_form"
 gem "unsplash_image"
+gem "cssbundling-rails"
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", ">= 5.0"
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
@@ -33,14 +35,14 @@ gem "ros-apartment", require: "apartment"
 gem "tzinfo-data", platforms: %i[ windows jruby ]
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
-gem "dartsass-sprockets"
-gem "jquery-rails"
+
+
 gem "cocoon"
 gem "scenic"
 gem "decent_exposure", "~> 3.0"
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 gem "image_processing", "~> 1.2"
-gem "bootstrap", "~> 5.3.3"
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
