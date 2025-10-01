@@ -7,7 +7,7 @@ gem "sprockets-rails"
 # Use postgresql as the database for Active Record
 gem "pg", "~> 1.1"
 gem "haml"
-gem "haml-rails", "~> 2.0"
+gem "haml-rails", "~> 3.0"
 gem "simple_form"
 gem "unsplash_image"
 # Use the Puma web server [https://github.com/puma/puma]
