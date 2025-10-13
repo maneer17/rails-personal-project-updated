@@ -1,4 +1,4 @@
-class Uni < ApplicationRecord
+class Tenant < ApplicationRecord
   after_create :create_tenant
 
   private
