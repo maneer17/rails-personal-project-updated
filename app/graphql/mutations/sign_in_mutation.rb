@@ -1,26 +1,30 @@
-# frozen_string_literal: true
-
 module Mutations
   class SignInMutation < BaseMutation
-    # TODO: define return fields
     field :token, String, null: true
     field :error, String, null: true
-    field :student, Types::StudentType
+    field :user, Types::TeacherType || Types::StudentType, null: false
 
-    # TODO: define arguments
     argument :email, String, required: true
     argument :password, String, required: true
+    argument :role, Types::RoleType, required: true
 
-    # TODO: define resolve method
-    def resolve(email:, password:)
+    def resolve(email:, password:, role:)
       raise GraphQL::ExecutionError, "User already signed in" if context[:current_user]
-      student = Student.find_by(email: email)
-      if student&.valid_password?(password)
-        token = JsonWebToken.genereate_token(student.id)
-        { token: token, error: " ", student: student }
+
+      user = student?(role) ? Student.find_by(email: email) : Teacher.find_by(email: email)
+      puts user&.email
+
+      if user&.valid_password?(password)
+        token = JsonWebToken.genereate_token({ user_id: user.id, role: role })
+        { token: token, error: nil, user: user }
       else
-        { error: "Username or Password is incorrect" }
+        { token: nil, error: "Username or Password is incorrect" }
       end
-  end
+    end
+
+    private
+      def student?(role)
+        role == "STUDENT"
+      end
   end
 end

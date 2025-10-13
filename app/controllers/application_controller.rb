@@ -11,9 +11,13 @@ class ApplicationController < ActionController::Base
       if request.headers["HTTP_AUTHORIZATION"]
         token = request.headers["HTTP_AUTHORIZATION"].split(" ").last
         decoded = JsonWebToken.decode_token(token)
-        Student.find(decoded[0])
+        student?(decoded[0]["role"]) ? Student.find(decoded[0]["user_id"]) : Teacher.find(decoded[0]["user_id"])
       else
         nil
       end
     end
+    private
+      def student?(role)
+        role == "STUDENT"
+      end
 end
