@@ -3,7 +3,7 @@
 module Types
   class RoleType < Types::BaseEnum
     description "the user is either a student or a teacher"
-    value "STUDENT", "student"
-    value "TEACHER", "teacher"
+    value "STUDENT", "a student user"
+    value "TEACHER", "a teacher user"
   end
 end
