@@ -11,4 +11,7 @@ class Course < ApplicationRecord
   scope :my_courses, ->(student) {
   joins(:student_courses).where(student_courses: { student_id: student.id })
   }
+  def teachedBy?(teacher)
+    self.teacher == teacher
+  end
 end
