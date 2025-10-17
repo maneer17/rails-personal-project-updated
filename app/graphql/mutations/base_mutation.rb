@@ -8,6 +8,7 @@ module Mutations
     object_class Types::BaseObject
 
      def ready?(**_args)
+      puts "kkkkkkkkkkkkkkkkkkk"
       if !context[:current_user]
         raise GraphQL::ExecutionError, "You need to login!"
       else

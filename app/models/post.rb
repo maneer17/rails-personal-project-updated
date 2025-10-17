@@ -7,4 +7,7 @@ class Post < ApplicationRecord
   validates :body, presence: true
 
   has_rich_text :body
+  def writtenBy?(teacher)
+    self.course.teacher == teacher
+  end
 end

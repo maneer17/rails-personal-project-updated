@@ -28,6 +28,7 @@ module Mutations
           { errors: user.errors.full_messages }
         end
       end
+
       def student?(role)
         role == "STUDENT"
       end
