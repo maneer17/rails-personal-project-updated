@@ -4,7 +4,7 @@ module Mutations
   class CreateEnrollmentMutation < BaseMutation
     # TODO: define return fields
     # field :post, Types::PostType, null: false
-    field :message, String, null: true
+    field :enrollment, Types::CourseType, null: true
 
     # TODO: define arguments
     # argument :name, String, required: true
@@ -12,14 +12,10 @@ module Mutations
     argument :course_id, ID, required: true
 
     def resolve(student_id:, course_id:)
-      student = Student.find(student_id)
-      course = Course.find(course_id)
-        if student.courses.include? course
-          { message: "already enrolled in this course!" }
-        else
-          student.courses << course
-          { message: "enrolled successfully " }
-        end
+      enrollment = StudentCourse.new(student_id: student_id, course_id: course_id)
+      raise GraphQL::ExecutionError.new "Error creating enrollment",
+       extensions: enrollment.errors.to_hash unless enrollment.save
+       { enrollment: Course.find(enrollment.course_id) }
       end
   end
 end
