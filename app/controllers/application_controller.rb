@@ -10,8 +10,12 @@ class ApplicationController < ActionController::Base
     def current_user
       if request.headers["HTTP_AUTHORIZATION"]
         token = request.headers["HTTP_AUTHORIZATION"].split(" ").last
-        decoded = JsonWebToken.decode_token(token)
-        student?(decoded[0]["role"]) ? Student.find(decoded[0]["user_id"]) : Teacher.find(decoded[0]["user_id"])
+        begin
+          decoded = JsonWebToken.decode_token(token)
+        rescue JWT::ExpiredSignature
+          return nil
+        end
+        student?(decoded[:role]) ? Student.find(decoded[:user_id]) : Teacher.find(decoded[:user_id])
       else
         nil
       end
