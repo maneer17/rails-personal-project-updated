@@ -1,9 +1,3 @@
-= turbo_stream.append "comments" do
-  = render "shared/comments/comment", role: :teacher
- 
-= turbo_stream.replace "comment_form" do 
-  = link_to "leave a comment", new_teacher_course_post_comment_path(course, post)
-
-  
-
-
+= turbo_stream.prepend "comments", partial: "shared/comments/comment", locals: {role: :teacher}
+= turbo_stream.update Comment.new, "" 
+= render_turbo_stream_flash_messages

@@ -3,6 +3,7 @@ class Student::AssignmentsController < ApplicationController
   expose :assignment, parent: :course
   expose :assignments, from: :course
   expose :student, :current_student
+  expose :submission, -> { Submission.find_by(student: student, assignment: assignment) }
   before_action :ensure_student_enroll_course
 
   private

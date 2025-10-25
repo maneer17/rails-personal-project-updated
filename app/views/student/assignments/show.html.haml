@@ -5,7 +5,7 @@
 
 %div
   - if assignment.is_submitted_by_student?(student)
-    = link_to t(".my_submission"), student_course_assignment_submission_path(course, assignment)
+    = link_to t(".my_submission"), student_course_assignment_submission_path(course, assignment,submission)
   - elsif not assignment.is_active?
     %a{style: "color: red;"} Deadline is overdue for this assignment!
   - else

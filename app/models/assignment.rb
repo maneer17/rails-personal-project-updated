@@ -6,8 +6,6 @@ class Assignment < ApplicationRecord
   validates :content, presence: :true
   validate :validate_if_deadline_date_cannot_be_in_the_past
 
-  has_rich_text :content
-
   scope :active, -> { where("deadline > ?", Time.current) }
 
 

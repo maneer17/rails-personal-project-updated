@@ -1,6 +1,6 @@
 = turbo_stream_from post
-%div{id: dom_id (post)}
-  %p
-    %strong =  post.title
-  %p
-    %strong = post.body
+
+%div.card.mb-3{id: dom_id(post)}
+  .card-body
+    %h5.card-title= post.title
+    %p.card-text= post.body

@@ -1,24 +1,25 @@
-%p{style: "color: green"}= notice
+- if notice
+  .alert.alert-success= notice
+
 = render assignment
-.container
-  .row.justify-content-start
-    .col-2
-      = button_to t("edit"),
+
+.container.mt-3
+  .row.g-2
+    .col-auto
+      = link_to t("edit"),
         edit_teacher_course_assignment_path(course, assignment),
-        method: :get,
         class: "btn btn-warning"
-    .col-2
+    .col-auto
       = button_to t("delete"),
         [:teacher, course, assignment],
         method: :delete,
         class: "btn btn-danger"
-    .col-2
-      = button_to t(".submissions_for_assignment"),
+    .col-auto
+      = link_to t(".submissions_for_assignment"),
         teacher_course_assignment_submissions_path(course, assignment),
-        method: :get,
         class: "btn btn-primary"
+
 %br/
-= button_to t(".back_to_assignments"),
+= link_to t(".back_to_assignments"),
   teacher_course_assignments_path,
-  method: :get,
   class: "btn btn-info"
