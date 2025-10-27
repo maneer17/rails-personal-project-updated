@@ -2,6 +2,7 @@ source "https://rubygems.org"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.2.2"
+gem "ruby-vips"
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "propshaft"
@@ -22,6 +23,7 @@ gem "turbo-rails"
 gem "stimulus-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
+
 # Use Redis adapter to run Action Cable in production
 gem "tty-prompt"
 gem "tty-command"
@@ -29,7 +31,10 @@ gem "tty-command"
 # gem "kredis"
 gem "ros-apartment", require: "apartment"
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
-# gem "bcrypt", "~> 3.1.7"
+gem "bcrypt", "~> 3.1.7"
+gem "jwt"
+# Gemfile
+gem "graphql"
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: %i[ windows jruby ]
@@ -37,6 +42,8 @@ gem "tzinfo-data", platforms: %i[ windows jruby ]
 gem "bootsnap", require: false
 
 gem "scenic"
+
+
 gem "decent_exposure", "~> 3.0"
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 gem "image_processing", "~> 1.2"
@@ -70,3 +77,4 @@ end
 gem "devise", "~> 4.9"
 
 gem "redis", "~> 5.4"
+gem "graphiql-rails", group: :development

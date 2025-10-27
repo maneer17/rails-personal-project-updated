@@ -5,6 +5,7 @@ class Teacher::CoursesController < ApplicationController
   before_action :ensure_teacher_teaches_course, only: %i[show edit update destroy ]
   def create
     respond_to do |format|
+      course.avatar.attach(params[:avatar])
       if course.save
         format.html { redirect_to teacher_course_path(course), notice: t(".notice") }
         format.json { render :show, status: :created, location: course }

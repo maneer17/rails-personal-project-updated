@@ -1,5 +1,4 @@
 - if course.avatar.attached?
-  - if course.avatar.image?
-    = image_tag(course.avatar,class:"card-img-top")
+  = image_tag course.avatar, class: "card-img-top"
 - else
-  = image_tag "images/#{random_image_from_folder('images') }",class:"card-img-top"
+  = image_tag "courseImg.jpg", class: "card-img-top"

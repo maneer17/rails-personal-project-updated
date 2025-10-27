@@ -13,7 +13,6 @@
             = render course
 
             .row.g-2{style: "margin: 10px 0;"}
-              / Buttons aligned horizontally
               .col-auto
                 = button_to t(".assignments"), student_course_assignments_path(course),
                               method: :get, class: "btn btn-primary"
@@ -21,7 +20,6 @@
                 = button_to t(".posts"), student_course_posts_path(course),
                               method: :get, class: "btn btn-primary"
 
-            / Unenroll button below
             .row{style: "margin: 10px 0;"}
               .col
                 = button_to t(".unenroll_from_course"), unenroll_student_courses_path(course_id: course.id),

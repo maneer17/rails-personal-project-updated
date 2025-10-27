@@ -1,7 +1,7 @@
 class Submission < ApplicationRecord
   belongs_to :student
   belongs_to :assignment
-
+  delegate :course, to: :assignment
   has_one_attached :file, dependent: :destroy
 
   validates :file, presence: true, allow_nil: false
